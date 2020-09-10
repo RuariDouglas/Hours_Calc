@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@400;700&display=swap');
+// ------------------ RESET -------------------- //
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+// ------------------ VARIABLES -------------------- //
+$fontLarge: 1.7rem;
+$fontBig: 1.2rem;
+$fontMed: 1rem;
+$fontSmall: .9rem;
+$letterSpacing: -.9px;
+$lineHeightReg: 1.4rem;
+$lineHeightLrg: 1.6rem;
+$alexGreen: #59CA8A;
+$darkGreen: #38A567;
+$whiteish: #FFFDE4;
+$blue: #275599;
+$gray: #333;
+$headingFont: 'Overpass Mono',
+monospace;
+$bodyFont: arial,
+sans-serif;
+// ------------------ @MIXINS --------------------- //
+@mixin flexexcution {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+// ------------------ & NOW THE CODE --------------------- //
+body {
+    background-color: $gray;
+}
+
+main {
+    @include flexexcution();
+}
+
+.container {
+    @include flexexcution();
+    position: relative;
+    width: 70%;
+    text-align: center;
+    background-color: $whiteish;
+    border-radius: 10px;
+    font-weight: light;
+    margin-top: 20px;
+}
+
+h1 {
+    font-size: $fontLarge;
+    text-align: center;
+    font-family: $headingFont;
+    font-weight: bold;
+    color: $blue;
+    margin: 20px 0;
+}
+
+form {
+    @include flexexcution();
+    font-family: $headingFont;
+    line-height: $lineHeightReg;
+    padding: 0 0 15px;
+    input {
+        font-size: $fontSmall;
+        font-family: $headingFont;
+        color: $gray;
+        background-color: $whiteish;
+        font-weight: 600;
+        width: 70%;
+        padding: 8px 15px;
+        outline: none;
+        border: 3px solid $whiteish;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        letter-spacing: -0.9px;
+        transition: .3s;
+        &::placeholder {
+            color: #adadad;
+        }
+        &:focus {
+            border: 3px solid $blue;
+        }
+        &:focus::placeholder {
+            opacity: 0;
+        }
+    }
+    button {
+        font-size: $fontBig;
+        font-family: $headingFont;
+        font-weight: 300;
+        width: 70%;
+        padding: 11px 5px 4px;
+        background-color: $blue;
+        border-radius: 5px;
+        border: none;
+        color: $whiteish;
+        transition: .2s;
+        letter-spacing: $letterSpacing;
+        &:hover {
+            background-color: #16417c;
+        }
+    }
+}
+
+table {
+    padding: 10px;
+    text-align: left;
+    font-family: $bodyFont;
+    border-spacing: 0;
+    width: 100%;
+    th {
+        font-size: $fontSmall;
+        border-bottom: 1px solid#c9c9c9;
+        padding: 0px 5px 5px;
+    }
+    .theMonth {
+        position: absolute;
+        z-index: -1;
+        top: -26px;
+        right: 0;
+        padding: 7px 15px 21px;
+        border: none;
+        color: $whiteish;
+        background-color: $blue;
+        font-family: $headingFont;
+        font-weight: bold;
+        font-size: $fontMed;
+        letter-spacing: $letterSpacing;
+        border-radius: 5px;
+    }
+    .theDay {
+        width: 13%;
+    }
+    tr {
+        vertical-align: bottom;
+        background-color: #eee;
+    }
+    tr:nth-child(even) {
+        background-color: $whiteish;
+    }
+    td {
+        font-size: $fontSmall;
+        line-height: $lineHeightLrg;
+        padding: 0px 4px;
+    }
+}
