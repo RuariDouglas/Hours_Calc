@@ -1,0 +1,64 @@
+<%- include("partials/header") %>
+    <h1>
+        Hours Calculator</h1>
+    <form action="/<%= foundMonth._id %>" method="POST">
+        <input step="any" min="0" max="23" type="number" name="startTime" placeholder="What time did you start?" required>
+        <input step="any" min="0" max="23" type="number" name="endTime" placeholder="What time did you finish?" required>
+        <input step="any" min="0" max="23" type="number" name="lunchTime" placeholder="How long was lunch?" required>
+        <button>Add Hours</button>
+    </form>
+    <main>
+        <div class="container">
+            <select name="monthList" onchange="location = this.value;">
+                <option selected value="">Choose a month</option>
+                <% for (months of allMonths){ %>
+                <option value="/<%= months._id %>"><%= months.month %></option>
+                <% } %>
+            </select>
+
+            <table>
+                <tr>
+                    <th class="theMonth">
+                        <%= foundMonth.month %>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="theDay">Day</th>
+                    <th>Start Time</th>
+                    <th>Finish TIme</th>
+                    <th>Lunch (hours)</th>
+                    <th>Ttl Hours Worked</th>
+                </tr>
+                <% let total = 0 %>
+                    <% for(let shift of foundMonth.shifts){ %>
+                        <tr>
+                            <td class="theDay">
+                                <%= shift.date %>
+                            </td>
+                            <td>
+                                <%= shift.startTime %>
+                            </td>
+                            <td>
+                                <%= shift.finishTime %>
+                            </td>
+                            <td>
+                                <%= shift.lunchTime %>
+                            </td>
+                            <td class="totalShiftHours">
+                                <%= shift.totalShiftHours %>
+                            </td>
+                            <% total += shift.totalShiftHours %>
+                        </tr>
+                        <% } %>
+
+            </table>
+            <p>
+                Total hours worked:
+                <%= total %>
+            </p>
+        </div>
+
+    </main>
+    <%- include("partials/footer") %>
+
+        <%- include("partials/footer") %>

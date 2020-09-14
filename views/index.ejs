@@ -9,6 +9,20 @@
     </form>
     <main>
         <div class="container">
+            <form action="/form2" method="POST">
+                <select name="months" id="monthSelector" onchange="location = this.value;">
+                    <% for (selectedMonth of months) { %>
+                        <option value="/<%= selectedMonth._id %>"><%= selectedMonth.month %></option>
+                    <% } %>
+                </select>
+            </form>
+            <!-- <select name="months">
+            <select name="forma" onchange="location = this.value;">
+            <option value="Home.php">Home</option>
+            <option value="Contact.php">Contact</option>
+            <option value="Sitemap.php">Sitemap</option>
+</select>
+            </select> -->
             <table class="<%= month %>">
                 <tr>
                     <th class="theMonth">

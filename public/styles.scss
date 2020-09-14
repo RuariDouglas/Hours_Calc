@@ -89,7 +89,7 @@ form {
         font-size: $fontSmall;
         font-family: $headingFont;
         color: $gray;
-        background-color: blue;
+        background-color: $whiteish;
         font-weight: 600;
         width: 70%;
         padding: 8px 15px;
@@ -98,7 +98,6 @@ form {
         margin-bottom: 10px;
         border-radius: 5px;
         letter-spacing: -0.9px;
-        
         transition: .3s;
         &::placeholder {
             color: #adadad;
@@ -126,6 +125,14 @@ form {
             background-color: #16417c;
         }
     }
+}
+
+ul.monthList li {
+    display: none;
+}
+
+ul.monthList:hover li {
+    display: block;
 }
 
 table {

@@ -170,6 +170,14 @@ form button:hover {
   background-color: #16417c;
 }
 
+ul.monthList li {
+  display: none;
+}
+
+ul.monthList:hover li {
+  display: block;
+}
+
 table {
   padding: 10px;
   text-align: left;
