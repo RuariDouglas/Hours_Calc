@@ -89,7 +89,7 @@ form {
         font-size: $fontSmall;
         font-family: $headingFont;
         color: $gray;
-        background-color: $whiteish;
+        background-color: blue;
         font-weight: 600;
         width: 70%;
         padding: 8px 15px;
@@ -98,6 +98,7 @@ form {
         margin-bottom: 10px;
         border-radius: 5px;
         letter-spacing: -0.9px;
+        
         transition: .3s;
         &::placeholder {
             color: #adadad;

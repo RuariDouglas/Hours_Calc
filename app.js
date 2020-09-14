@@ -8,6 +8,9 @@ const date = new Date(),
     day = date.getDate(),
     month = date.toLocaleString('default', { month: 'long' });
 
+
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
@@ -33,9 +36,6 @@ const shiftSchema = new mongoose.Schema({
 const Shift = mongoose.model('Shift', shiftSchema);
 
 
-
-
-
 app.get('/', (req, res) => {
     Shift.find({}, (err, allShifts) => {
         if (err) console.log(`There's an error: ${err}`)
@@ -45,11 +45,20 @@ app.get('/', (req, res) => {
             month: month
         })
     });
-
+    Month.find({ month: { $in: month } }, (err, foundMonth) => {
+        if (foundMonth.length === 0) {
+            Month.create({ month: month }, (err, createdMonth) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    return;
+                }
+            });
+        }
+    });
 });
 
 app.post('/', (req, res) => {
-
     const startTime = Number(req.body.startTime);
     const finishTime = Number(req.body.endTime);
     const lunchTime = Number(req.body.lunchTime);
@@ -61,34 +70,17 @@ app.post('/', (req, res) => {
         lunchTime: lunchTime,
         totalShiftHours: totalShiftHours
     };
-    Month.find({ month: { $exists: true } }, (err, foundMonth) => {
-        if (err) {
-            Month.create({ month: month }, (err, newMonth) => {
-                if (err) {
-                    console.log(err)
-                    res.redirect('/')
-                } else {
-                    Shift.create(newShift, (err, newShift) => {
-                        if (err) {
-                            console.log(`Somethings wrong, ${err}`);
-                        } else {
-                            newMonth.shifts.push(newShift);
-                            newMonth.save();
-                            res.redirect('/')
-                        }
-                    });
-                }
-            })
-        } else {
-            Shift.create(newShift, (err, newShift) => {
-                if (err) {
-                    console.log(`Somethings wrong, ${err}`);
-                } else {
-                    foundMonth[0].shifts.push(newShift);
-                    foundMonth[0].save();
-                    res.redirect('/');
-                };
-            });
-        }
+
+    Month.find({ month: { $in: month } }, (err, newFoundMonth) => {
+        Shift.create(newShift, (err, createdShift) => {
+            if (err) {
+                console.log(`Cant create the shift ${err}`)
+            } else {
+                createdShift.save();
+                newFoundMonth[0].shifts.push(createdShift);
+                newFoundMonth[0].save();
+                res.redirect('/');
+            }
+        })
     });
 });
