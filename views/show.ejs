@@ -1,28 +1,39 @@
 <%- include("partials/header") %>
-    <h1>
-        Hours Calculator</h1>
-    <form action="/<%= foundMonth._id %>" method="POST">
-        <input step="any" min="0" max="23" type="number" name="startTime" placeholder="What time did you start?" required>
-        <input step="any" min="0" max="23" type="number" name="endTime" placeholder="What time did you finish?" required>
-        <input step="any" min="0" max="23" type="number" name="lunchTime" placeholder="How long was lunch?" required>
-        <button>Add Hours</button>
+    <div class="container">
+        <h1 class="title">
+            <span class="light">Hours</span> Calculator</h1>
+        <p>*Please enter all values in 24hour format. Eg. 5pm = 17. </p>
+        <form action="/<%= foundMonth._id %>" method="POST" autocomplete="off">
+            <div class="form-group">
+                <input class="top-inputs" step="any" min="0" max="23" type="number" name="startTime" placeholder="Start Time?" required>
+            </div>
+            <div class="form-group">
+                <input class="top-inputs" step="any" min="0" max="23" type="number" name="endTime" placeholder="Finish Time?" required>
+            </div>
+            <div class="form-group">
+                <input class="top-inputs" step="any" min="0" max="23" type="number" name="lunchTime" placeholder="Time taken for lunch?" required>
+            </div>
+            <div class="form-group">
+                <input class="top-inputs button" type="submit">
+            </div>
+    </div>
     </form>
     <main>
-        <div class="container">
-            <select name="monthList" onchange="location = this.value;">
-                <option selected value="">Choose a month</option>
-                <% for (months of allMonths){ %>
-                <option value="/<%= months._id %>"><%= months.month %></option>
+        <div class="container mt-4">
+            <div class="shifts-header">
+                <h2 class="month-title">
+                    <%= foundMonth.month %>
+                </h2>
+                <select name="monthList" onchange="location = this.value;">
+                    <option selected value="">Choose a month</option>
+                    <% for (months of allMonths){ %>
+                    <option value="/<%= months._id %>"><%= months.month %></option>
                 <% } %>
-            </select>
+                </select>
+            </div>
 
             <table>
-                <tr>
-                    <th class="theMonth">
-                        <%= foundMonth.month %>
-                    </th>
-                </tr>
-                <tr>
+                <tr class="table-header">
                     <th class="theDay">Day</th>
                     <th>Start Time</th>
                     <th>Finish TIme</th>
@@ -52,13 +63,16 @@
                         <% } %>
 
             </table>
-            <p>
-                Total hours worked:
+            <p class="hours-worked">
+                Total hours worked in
+                <strong><%= foundMonth.month %>:</strong>
                 <%= total %>
+
             </p>
         </div>
 
     </main>
+    </div>
     <%- include("partials/footer") %>
 
         <%- include("partials/footer") %>

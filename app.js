@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 // ----------------------------------------//
 require('dotenv').config();
-let DB_URL = process.env.DATABASE_URL;
+let DB_URL = process.env.DB_URL;
 // ----------------------------------------//
 const date = new Date();
 const day = date.getDate();

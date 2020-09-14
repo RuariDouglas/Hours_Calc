@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,200&display=swap');
 // ------------------ RESET -------------------- //
 html {
     box-sizing: border-box;
@@ -26,23 +26,21 @@ ul {
     font-weight: normal;
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
 // ------------------ VARIABLES -------------------- //
-$fontLarge: 1.7rem;
-$fontBig: 1.2rem;
-$fontMed: 1rem;
-$fontSmall: .9rem;
-$letterSpacing: -.9px;
-$lineHeightReg: 1.4rem;
-$lineHeightLrg: 1.6rem;
-$alexGreen: #59CA8A;
-$darkGreen: #38A567;
-$whiteish: #FFFDE4;
-$blue: #275599;
-$gray: #333;
-$headingFont: 'Overpass Mono',
-monospace;
-$bodyFont: arial,
-sans-serif;
+$white: #fff;
+$orange: #f39971;
+$yellow: #fdf5a2;
+$lightSalmon: #F6988B;
+$darkSalmon: #F37871;
+$pinkRed: #CF4351;
+$dark: #1E3645;
 // ------------------ @MIXINS --------------------- //
 @mixin flexexcution {
     display: flex;
@@ -53,127 +51,111 @@ sans-serif;
 
 // ------------------ & NOW THE CODE --------------------- //
 body {
-    background-color: $gray;
+    background: rgb(243, 153, 113);
+    background: linear-gradient(332deg, $darkSalmon 0%, $orange 100%, );
+    height: 100vh;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+h1.title {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: $white;
+    .light {
+        font-weight: 200;
+    }
+    margin: 1rem 0;
+}
+
+h2.month-title {
+    color: $yellow;
+    font-size: 1.6rem;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: .4rem;
+    font-size: .9rem;
+    color: $white;
+    opacity: .4;
+    font-style: italic;
+}
+
+.form-group {
+    margin-bottom: .3rem !important;
+    .top-inputs {
+        background-color: transparent;
+        cursor: text;
+        font-size: .9rem;
+        font-weight: 600;
+        padding: 7px 0;
+        color: $white;
+        border: none;
+        border-bottom: 1px solid $white;
+        text-align: center;
+        width: 100%;
+        &::placeholder {
+            color: $white;
+        }
+        &:focus,
+        &:active {
+            background-color: $white;
+            color: #3e3e3e;
+            transition: .2s linear;
+        }
+    }
+    .button {
+        background-color: transparent;
+        font-weight: 600;
+        border: none;
+        border-bottom: 1px solid $yellow;
+        &:hover {
+            background-color: $yellow;
+            color: $darkSalmon;
+        }
+    }
 }
 
 main {
     @include flexexcution();
-}
-
-.container {
-    @include flexexcution();
-    position: relative;
-    width: 70%;
-    text-align: center;
-    background-color: $whiteish;
-    border-radius: 10px;
-    font-weight: light;
-    margin-top: 20px;
-}
-
-h1 {
-    font-size: $fontLarge;
-    text-align: center;
-    font-family: $headingFont;
-    font-weight: bold;
-    color: $blue;
-    margin: 20px 0;
-}
-
-form {
-    @include flexexcution();
-    font-family: $headingFont;
-    line-height: $lineHeightReg;
-    padding: 0 0 15px;
-    input {
-        font-size: $fontSmall;
-        font-family: $headingFont;
-        color: $gray;
-        background-color: $whiteish;
+    .shifts-header {
+        display: flex;
+        justify-content: space-between;
+    }
+    select {
+        background-color: transparent;
+        font-size: .9rem;
+        color: $yellow;
         font-weight: 600;
-        width: 70%;
-        padding: 8px 15px;
-        outline: none;
-        border: 3px solid $whiteish;
-        margin-bottom: 10px;
-        border-radius: 5px;
-        letter-spacing: -0.9px;
-        transition: .3s;
-        &::placeholder {
-            color: #adadad;
-        }
+        border: none;
+        font-size: .9rem;
+        padding: 0 6px;
         &:focus {
-            border: 3px solid $blue;
-        }
-        &:focus::placeholder {
-            opacity: 0;
+            background-color: $yellow;
+            color: $darkSalmon;
         }
     }
-    button {
-        font-size: $fontBig;
-        font-family: $headingFont;
-        font-weight: 300;
-        width: 70%;
-        padding: 11px 5px 4px;
-        background-color: $blue;
-        border-radius: 5px;
-        border: none;
-        color: $whiteish;
-        transition: .2s;
-        letter-spacing: $letterSpacing;
-        &:hover {
-            background-color: #16417c;
+    table {
+        background-color: rgba(255, 255, 255, .1);
+        font-size: .8rem;
+        width: 100%;
+        tr {
+            line-height: 1rem;
+        }
+        tr:nth-of-type(2n) {
+            background-color: rgba(255, 255, 255, .2);
+        }
+        th,
+        td {
+            padding: 5px;
+            text-align: center;
+            color: $white;
+        }
+        .table-header th {
+            color: $yellow;
         }
     }
-}
-
-ul.monthList li {
-    display: none;
-}
-
-ul.monthList:hover li {
-    display: block;
-}
-
-table {
-    padding: 10px;
-    text-align: left;
-    font-family: $bodyFont;
-    border-spacing: 0;
-    width: 100%;
-    th {
-        font-size: $fontSmall;
-        border-bottom: 1px solid#c9c9c9;
-        padding: 0px 5px 5px;
-    }
-    .theMonth {
-        position: absolute;
-        z-index: -1;
-        top: -26px;
-        right: 0;
-        padding: 7px 15px 21px;
-        border: none;
-        color: $whiteish;
-        background-color: $blue;
-        font-family: $headingFont;
-        font-weight: bold;
-        font-size: $fontMed;
-        letter-spacing: $letterSpacing;
-        border-radius: 5px;
-    }
-    .theDay {
-        width: 13%;
-    }
-    tr {
-        vertical-align: bottom;
-        background-color: #eee;
-    }
-    tr:nth-child(even) {
-        background-color: $whiteish;
-    }
-    td {
-        font-size: $fontSmall;
-        line-height: $lineHeightLrg;
-        padding: 0px 4px;
+    .hours-worked {
+        margin-top: 5px;
+        opacity: 1;
     }
 }

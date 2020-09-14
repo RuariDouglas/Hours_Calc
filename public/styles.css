@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,200&display=swap");
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -27,8 +27,94 @@ ul {
   font-weight: normal;
 }
 
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
 body {
-  background-color: #333;
+  background: #f39971;
+  background: linear-gradient(332deg, #F37871 0%, #f39971 100%);
+  height: 100vh;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+h1.title {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #fff;
+  margin: 1rem 0;
+}
+
+h1.title .light {
+  font-weight: 200;
+}
+
+h2.month-title {
+  color: #fdf5a2;
+  font-size: 1.6rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: .4rem;
+  font-size: .9rem;
+  color: #fff;
+  opacity: .4;
+  font-style: italic;
+}
+
+.form-group {
+  margin-bottom: .3rem !important;
+}
+
+.form-group .top-inputs {
+  background-color: transparent;
+  cursor: text;
+  font-size: .9rem;
+  font-weight: 600;
+  padding: 7px 0;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #fff;
+  text-align: center;
+  width: 100%;
+}
+
+.form-group .top-inputs::-webkit-input-placeholder {
+  color: #fff;
+}
+
+.form-group .top-inputs:-ms-input-placeholder {
+  color: #fff;
+}
+
+.form-group .top-inputs::-ms-input-placeholder {
+  color: #fff;
+}
+
+.form-group .top-inputs::placeholder {
+  color: #fff;
+}
+
+.form-group .top-inputs:focus, .form-group .top-inputs:active {
+  background-color: #fff;
+  color: #3e3e3e;
+  -webkit-transition: .2s linear;
+  transition: .2s linear;
+}
+
+.form-group .button {
+  background-color: transparent;
+  font-weight: 600;
+  border: none;
+  border-bottom: 1px solid #fdf5a2;
+}
+
+.form-group .button:hover {
+  background-color: #fdf5a2;
+  color: #F37871;
 }
 
 main {
@@ -47,183 +133,57 @@ main {
           flex-direction: column;
 }
 
-.container {
+main .shifts-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  position: relative;
-  width: 70%;
-  text-align: center;
-  background-color: #FFFDE4;
-  border-radius: 10px;
-  font-weight: light;
-  margin-top: 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-h1 {
-  font-size: 1.7rem;
-  text-align: center;
-  font-family: "Overpass Mono", monospace;
-  font-weight: bold;
-  color: #275599;
-  margin: 20px 0;
-}
-
-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  font-family: "Overpass Mono", monospace;
-  line-height: 1.4rem;
-  padding: 0 0 15px;
-}
-
-form input {
-  font-size: 0.9rem;
-  font-family: "Overpass Mono", monospace;
-  color: #333;
-  background-color: #FFFDE4;
+main select {
+  background-color: transparent;
+  font-size: .9rem;
+  color: #fdf5a2;
   font-weight: 600;
-  width: 70%;
-  padding: 8px 15px;
-  outline: none;
-  border: 3px solid #FFFDE4;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  letter-spacing: -0.9px;
-  -webkit-transition: .3s;
-  transition: .3s;
-}
-
-form input::-webkit-input-placeholder {
-  color: #adadad;
-}
-
-form input:-ms-input-placeholder {
-  color: #adadad;
-}
-
-form input::-ms-input-placeholder {
-  color: #adadad;
-}
-
-form input::placeholder {
-  color: #adadad;
-}
-
-form input:focus {
-  border: 3px solid #275599;
-}
-
-form input:focus::-webkit-input-placeholder {
-  opacity: 0;
-}
-
-form input:focus:-ms-input-placeholder {
-  opacity: 0;
-}
-
-form input:focus::-ms-input-placeholder {
-  opacity: 0;
-}
-
-form input:focus::placeholder {
-  opacity: 0;
-}
-
-form button {
-  font-size: 1.2rem;
-  font-family: "Overpass Mono", monospace;
-  font-weight: 300;
-  width: 70%;
-  padding: 11px 5px 4px;
-  background-color: #275599;
-  border-radius: 5px;
   border: none;
-  color: #FFFDE4;
-  -webkit-transition: .2s;
-  transition: .2s;
-  letter-spacing: -0.9px;
+  font-size: .9rem;
+  padding: 0 6px;
 }
 
-form button:hover {
-  background-color: #16417c;
+main select:focus {
+  background-color: #fdf5a2;
+  color: #F37871;
 }
 
-ul.monthList li {
-  display: none;
-}
-
-ul.monthList:hover li {
-  display: block;
-}
-
-table {
-  padding: 10px;
-  text-align: left;
-  font-family: arial, sans-serif;
-  border-spacing: 0;
+main table {
+  background-color: rgba(255, 255, 255, 0.1);
+  font-size: .8rem;
   width: 100%;
 }
 
-table th {
-  font-size: 0.9rem;
-  border-bottom: 1px solid #c9c9c9;
-  padding: 0px 5px 5px;
+main table tr {
+  line-height: 1rem;
 }
 
-table .theMonth {
-  position: absolute;
-  z-index: -1;
-  top: -26px;
-  right: 0;
-  padding: 7px 15px 21px;
-  border: none;
-  color: #FFFDE4;
-  background-color: #275599;
-  font-family: "Overpass Mono", monospace;
-  font-weight: bold;
-  font-size: 1rem;
-  letter-spacing: -0.9px;
-  border-radius: 5px;
+main table tr:nth-of-type(2n) {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-table .theDay {
-  width: 13%;
+main table th,
+main table td {
+  padding: 5px;
+  text-align: center;
+  color: #fff;
 }
 
-table tr {
-  vertical-align: bottom;
-  background-color: #eee;
+main table .table-header th {
+  color: #fdf5a2;
 }
 
-table tr:nth-child(even) {
-  background-color: #FFFDE4;
-}
-
-table td {
-  font-size: 0.9rem;
-  line-height: 1.6rem;
-  padding: 0px 4px;
+main .hours-worked {
+  margin-top: 5px;
+  opacity: 1;
 }
 /*# sourceMappingURL=styles.css.map */
