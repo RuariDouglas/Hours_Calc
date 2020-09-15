@@ -1,24 +1,65 @@
+// ----------- Packages/ENV ---------------//
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-// ----------------------------------------//
+const functions = require('./functions.js');
 require('dotenv').config();
 let DB_URL = process.env.DB_URL;
-// ----------------------------------------//
+
+// ----------- Global Variables -------------//
 const date = new Date();
 const day = date.getDate();
 const month = date.toLocaleString('default', { month: 'long' });
 
+//-----------------------------------------
+// const totalHours = (start, finish, lunch) => {
+//     let startTime = convertToDecimal(start);
+//     let finishTime = convertToDecimal(finish);
+//     let total = finishTime - startTime - lunch;
+//     return convertToTime(total.toString());
+// }
+// const convertToDecimal = time => {
+//     let newTime = time.replace(/(:)/g, '.').replace(/(\.\d+)/g, function(el) {
+//         let sum = (Number(el) / 60) * 100;
+//         let rounded = Math.round((sum + Number.EPSILON) * 100) / 100;
+//         return rounded.toString().slice(1)
+//     })
+//     return newTime;
+// }
 
+// const convertToTime = time => {
+//     let returnedTime = time.replace(/(\.\d+)/g, function(el) {
+//         let m = Math.round(Number(el) * 60);
+//         return `.${m}`
+//     });
+//     return timeFormatter(returnedTime);
+//     //return returnedTime.length <= 2 ? Number(`${returnedTime}`) + .00 : returnedTime.split('.')[1].length < 2 ? Number(`${returnedTime}`) + 0 : Number(returnedTime);
+// };
+// const timeFormatter = time => {
+//         let timeStr = time.toString();
+//         let hrs = timeStr.split('.')[0];
+//         let mins = timeStr.split('.')[1];
+//         return timeStr.includes('.') ? `${hrs} hrs ${mins} mins` : `${hrs} hrs`
+//     }
 
+const timeFormatter = time => {
+    let timeStr = time.toString();
+    let hrs = timeStr.split('.')[0];
+    let mins = timeStr.split('.')[1];
+    return timeStr.includes('.') ? `${hrs} hrs ${mins} mins` : `${hrs} hrs`
+}
 
+console.log(timeFormatter(7.5))
+
+// ----------- App.use, set & listen ---------------//
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.listen(3000, () => console.log("I'm listening"));
 mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
+// ----------- Schemas ---------------//
 const monthSchema = new mongoose.Schema({
     month: String,
     shifts: [{
@@ -30,10 +71,10 @@ const Month = mongoose.model('Month', monthSchema);
 
 const shiftSchema = new mongoose.Schema({
     date: Number,
-    startTime: Number,
-    finishTime: Number,
+    startTime: String,
+    finishTime: String,
     lunchTime: Number,
-    totalShiftHours: Number
+    totalShiftHours: String
 });
 const Shift = mongoose.model('Shift', shiftSchema);
 
@@ -66,17 +107,19 @@ app.get('/:id', (req, res) => {
             if (err) {
                 console.log(err);
             } else {
-                res.render('show', { foundMonth: foundMonth, allMonths: allMonths })
+                res.render('show', { foundMonth: foundMonth, allMonths: allMonths, functions: functions })
             }
         })
     })
 });
 
+
+
 app.post('/:id', (req, res) => {
-    const startTime = Number(req.body.startTime);
-    const finishTime = Number(req.body.endTime);
+    const startTime = req.body.startTime;
+    const finishTime = req.body.endTime;
     const lunchTime = Number(req.body.lunchTime);
-    const totalShiftHours = finishTime - startTime - lunchTime;
+    const totalShiftHours = functions.totalHours(startTime, finishTime, lunchTime);
     const newShift = {
         date: day,
         startTime: startTime,

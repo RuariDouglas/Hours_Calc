@@ -5,10 +5,10 @@
         <p>*Please enter all values in 24hour format. Eg. 5pm = 17. </p>
         <form action="/<%= foundMonth._id %>" method="POST" autocomplete="off">
             <div class="form-group">
-                <input class="top-inputs" step="any" min="0" max="23" type="number" name="startTime" placeholder="Start Time?" required>
+                <input class="top-inputs" step="any" min="0" max="23" type="time" name="startTime" placeholder="Start Time?" required>
             </div>
             <div class="form-group">
-                <input class="top-inputs" step="any" min="0" max="23" type="number" name="endTime" placeholder="Finish Time?" required>
+                <input class="top-inputs" step="any" min="0" max="23" type="time" name="endTime" placeholder="Finish Time?" required>
             </div>
             <div class="form-group">
                 <input class="top-inputs" step="any" min="0" max="23" type="number" name="lunchTime" placeholder="Time taken for lunch?" required>
@@ -56,9 +56,9 @@
                                 <%= shift.lunchTime %>
                             </td>
                             <td class="totalShiftHours">
-                                <%= shift.totalShiftHours %>
+                                <%= functions.timeFormatter(shift.totalShiftHours) %>
                             </td>
-                            <% total += shift.totalShiftHours %>
+                            <% total += functions.totalHours(shift.startTime, shift.finishTime, shift.lunchTime) %>
                         </tr>
                         <% } %>
 
@@ -66,7 +66,7 @@
             <p class="hours-worked">
                 Total hours worked in
                 <strong><%= foundMonth.month %>:</strong>
-                <%= total %>
+                <%= functions.timeFormatter(total) %>
 
             </p>
         </div>
