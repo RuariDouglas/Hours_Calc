@@ -3,6 +3,7 @@
 html {
     box-sizing: border-box;
     font-size: 16px;
+    height: 100%;
 }
 
 *,
@@ -33,6 +34,10 @@ button:focus {
     outline: none;
 }
 
+input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
 // ------------------ VARIABLES -------------------- //
 $white: #fff;
 $orange: #f39971;
@@ -53,37 +58,49 @@ $dark: #1E3645;
 body {
     background: rgb(243, 153, 113);
     background: linear-gradient(332deg, $darkSalmon 0%, $orange 100%, );
-    height: 100vh;
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: Helvetica, Arial, sans-serif;
 }
 
-h1.title {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: $white;
-    .light {
-        font-weight: 200;
+.container {
+    text-align: center;
+    h1.title {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: $white;
+        .light {
+            font-weight: 200;
+        }
+        margin: 1rem 0;
     }
-    margin: 1rem 0;
-}
-
-h2.month-title {
-    color: $yellow;
-    font-size: 1.6rem;
-}
-
-p {
-    margin-top: 0;
-    margin-bottom: .4rem;
-    font-size: .9rem;
-    color: $white;
-    opacity: .4;
-    font-style: italic;
+    h2.month-title {
+        color: $yellow;
+        font-size: 1.6rem;
+    }
+    p {
+        margin-top: 0;
+        margin-bottom: .4rem;
+        font-size: .9rem;
+        color: $white;
+        opacity: .4;
+        font-style: italic;
+    }
 }
 
 .form-group {
     margin-bottom: .3rem !important;
+    text-align: center;
+    label {
+        font-size: .9rem;
+        font-weight: 600;
+        margin: 0;
+        color: white;
+    }
     .top-inputs {
         background-color: transparent;
+        position: relative;
         cursor: text;
         font-size: .9rem;
         font-weight: 600;
@@ -98,8 +115,9 @@ p {
         }
         &:focus,
         &:active {
+            border: 1px solid $white;
             background-color: $white;
-            color: #3e3e3e;
+            color: $darkSalmon;
             transition: .2s linear;
         }
     }
@@ -108,7 +126,10 @@ p {
         font-weight: 600;
         border: none;
         border-bottom: 1px solid $yellow;
-        &:hover {
+        &:hover,
+        &:focus,
+        &:active {
+            transition: .2s linear;
             background-color: $yellow;
             color: $darkSalmon;
         }
@@ -116,6 +137,7 @@ p {
 }
 
 main {
+    height: 100%;
     @include flexexcution();
     .shifts-header {
         display: flex;
@@ -155,6 +177,7 @@ main {
         }
     }
     .hours-worked {
+        text-align: left;
         margin-top: 5px;
         opacity: 1;
     }

@@ -12,46 +12,6 @@ const date = new Date();
 const day = date.getDate();
 const month = date.toLocaleString('default', { month: 'long' });
 
-//-----------------------------------------
-// const totalHours = (start, finish, lunch) => {
-//     let startTime = convertToDecimal(start);
-//     let finishTime = convertToDecimal(finish);
-//     let total = finishTime - startTime - lunch;
-//     return convertToTime(total.toString());
-// }
-// const convertToDecimal = time => {
-//     let newTime = time.replace(/(:)/g, '.').replace(/(\.\d+)/g, function(el) {
-//         let sum = (Number(el) / 60) * 100;
-//         let rounded = Math.round((sum + Number.EPSILON) * 100) / 100;
-//         return rounded.toString().slice(1)
-//     })
-//     return newTime;
-// }
-
-// const convertToTime = time => {
-//     let returnedTime = time.replace(/(\.\d+)/g, function(el) {
-//         let m = Math.round(Number(el) * 60);
-//         return `.${m}`
-//     });
-//     return timeFormatter(returnedTime);
-//     //return returnedTime.length <= 2 ? Number(`${returnedTime}`) + .00 : returnedTime.split('.')[1].length < 2 ? Number(`${returnedTime}`) + 0 : Number(returnedTime);
-// };
-// const timeFormatter = time => {
-//         let timeStr = time.toString();
-//         let hrs = timeStr.split('.')[0];
-//         let mins = timeStr.split('.')[1];
-//         return timeStr.includes('.') ? `${hrs} hrs ${mins} mins` : `${hrs} hrs`
-//     }
-
-const timeFormatter = time => {
-    let timeStr = time.toString();
-    let hrs = timeStr.split('.')[0];
-    let mins = timeStr.split('.')[1];
-    return timeStr.includes('.') ? `${hrs} hrs ${mins} mins` : `${hrs} hrs`
-}
-
-console.log(timeFormatter(7.5))
-
 // ----------- App.use, set & listen ---------------//
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -60,23 +20,8 @@ app.listen(3000, () => console.log("I'm listening"));
 mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // ----------- Schemas ---------------//
-const monthSchema = new mongoose.Schema({
-    month: String,
-    shifts: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Shift"
-    }]
-});
-const Month = mongoose.model('Month', monthSchema);
-
-const shiftSchema = new mongoose.Schema({
-    date: Number,
-    startTime: String,
-    finishTime: String,
-    lunchTime: Number,
-    totalShiftHours: String
-});
-const Shift = mongoose.model('Shift', shiftSchema);
+const Month = require('./models/month');
+const Shift = require('./models/shift');
 
 // Month.create({ month: 'December' }, (err, newMonth) => {
 //     if (err) { console.log(err) } else { console.log(`${newMonth.month} added`) }

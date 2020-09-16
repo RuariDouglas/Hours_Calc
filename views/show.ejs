@@ -1,13 +1,16 @@
 <%- include("partials/header") %>
     <div class="container">
         <h1 class="title">
-            <span class="light">Hours</span> Calculator</h1>
-        <p>*Please enter all values in 24hour format. Eg. 5pm = 17. </p>
+            <span class="light">Hours</span> Calculator
+        </h1>
         <form action="/<%= foundMonth._id %>" method="POST" autocomplete="off">
             <div class="form-group">
-                <input class="top-inputs" step="any" min="0" max="23" type="time" name="startTime" placeholder="Start Time?" required>
+                <label for="start-time"> When did you start?</label>
+                <input class="top-inputs" step="any" min="0" max="23" type="time" id="start-time" name="startTime" required>
+
             </div>
             <div class="form-group">
+                <label for="start-time"> When did you finish?</label>
                 <input class="top-inputs" step="any" min="0" max="23" type="time" name="endTime" placeholder="Finish Time?" required>
             </div>
             <div class="form-group">
@@ -16,8 +19,8 @@
             <div class="form-group">
                 <input class="top-inputs button" type="submit">
             </div>
+        </form>
     </div>
-    </form>
     <main>
         <div class="container mt-4">
             <div class="shifts-header">
@@ -66,7 +69,7 @@
             <p class="hours-worked">
                 Total hours worked in
                 <strong><%= foundMonth.month %>:</strong>
-                <%= functions.timeFormatter(total) %>
+                <span class="large-time"><%= functions.timeFormatter(total) %></span>
 
             </p>
         </div>
