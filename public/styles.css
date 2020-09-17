@@ -135,6 +135,7 @@ body {
 }
 
 .form-group .button:hover, .form-group .button:focus, .form-group .button:active {
+  border: none;
   -webkit-transition: .2s linear;
   transition: .2s linear;
   background-color: #fdf5a2;
@@ -184,6 +185,7 @@ main select:focus {
 
 main table {
   background-color: rgba(255, 255, 255, 0.1);
+  position: relative;
   font-size: .8rem;
   width: 100%;
 }
@@ -196,11 +198,75 @@ main table tr:nth-of-type(2n) {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-main table th,
+main table tr th,
 main table td {
   padding: 5px;
   text-align: center;
   color: #fff;
+}
+
+main table td.edit,
+main table td.delete {
+  position: absolute;
+  padding: 5px;
+  color: #fff;
+  width: 0;
+  display: inline-block;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+  opacity: 0;
+  height: auto;
+  text-align: center;
+}
+
+main table td.edit button,
+main table td.delete button {
+  background-color: transparent;
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 0;
+  font-weight: bold;
+}
+
+main table td.edit {
+  background-color: #fdf5a2;
+  left: 0;
+}
+
+main table td.edit button {
+  color: #F37871;
+}
+
+main table td.edit i {
+  color: #F37871;
+}
+
+main table td.delete {
+  background-color: #F37871;
+  right: 0;
+}
+
+main table td.delete form {
+  display: inline;
+}
+
+main table td.delete form button {
+  color: #fdf5a2;
+}
+
+main table td.delete form i {
+  color: #fdf5a2;
+}
+
+main table tr.table-entries-row:active td.edit,
+main table tr.table-entries-row:hover td.edit,
+main table tr.table-entries-row:active td.delete,
+main table tr.table-entries-row:hover td.delete {
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+  width: 50%;
+  opacity: 1;
 }
 
 main table .table-header th {

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Month = require('./month')
+const Month = require('./month');
 
 const shiftSchema = new mongoose.Schema({
     date: Number,
