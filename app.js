@@ -27,11 +27,14 @@ app.use(express.static(__dirname + '/public'));
 const Month = require('./models/month');
 const Shift = require('./models/shift');
 
+// Month.create({ month: 'January' }, (err, newMonth) => {
+//     if (err) { console.log(err) } else { console.log(`${newMonth.month} added`) }
+// });
+
 
 // INDEX ROUTE
 app.get('/', (req, res) => {
     Month.find({ month: { $in: month } }, (err, foundMonth) => {
-        console.log(foundMonth)
         if (foundMonth.length === 0) {
             Month.create({ month: month }, (err, createdMonth) => {
                 if (err) {
@@ -50,6 +53,7 @@ app.get('/', (req, res) => {
 app.get('/:id', (req, res) => {
     Month.find({}, (err, allMonths) => {
         Month.findById(req.params.id).populate('shifts').exec((err, foundMonth) => {
+            // console.log(req.params.id)
             if (err) {
                 console.log(err);
             } else {
@@ -122,11 +126,19 @@ app.put('/:id/shift/:shift_id', (req, res) => {
 
 // DELETE
 app.delete('/:id/shift/:shift_id', (req, res) => {
-    Shift.findByIdAndDelete(req.params.shift_id, (err, foundShift) => {
+    Shift.findByIdAndDelete(req.params.shift_id, (err, deletedShift) => {
         if (err) {
             console.log(err);
         } else {
-            res.redirect(`/${req.params.id}`)
+            console.log(`This is the deleted shift: ${deletedShift}`);
+            Month.updateOne({ _id: req.params.id }, { $pull: { shifts: { $in: req.params.shift_id } } }, (err, updated) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log(`This is the updated month: ${updated}`)
+                    res.redirect(`/${req.params.id}`);
+                }
+            });
         }
-    });
+    })
 })

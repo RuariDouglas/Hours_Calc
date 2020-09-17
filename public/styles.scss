@@ -42,7 +42,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 $white: #fff;
 $orange: #f39971;
 $yellow: #fdf5a2;
-$lightSalmon: #F6988B;
+$lightSalmon: #F7AB99;
 $darkSalmon: #F37871;
 $pinkRed: #CF4351;
 $dark: #1E3645;
@@ -205,7 +205,7 @@ main {
             }
         }
         td.delete {
-            background-color: $darkSalmon;
+            background-color: $lightSalmon;
             ;
             right: 0;
             form {
