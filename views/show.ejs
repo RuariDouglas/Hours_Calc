@@ -5,16 +5,16 @@
         </h1>
         <form action="/<%= month._id %>" method="POST" autocomplete="off">
             <div class="form-group">
-                <label for="start-time"> When did you start?</label>
-                <input class="top-inputs" step="any" min="0" max="23" type="time" id="start-time" name="startTime" required>
-
+                <label for="start-time">When did you start?</label>
+                <input class="top-inputs" min="0" max="23" type="time" id="start-time" name="startTime" value=":" required>
             </div>
             <div class="form-group">
-                <label for="start-time"> When did you finish?</label>
-                <input class="top-inputs" step="any" min="0" max="23" type="time" name="endTime" placeholder="Finish Time?" required>
+                <label for="start-time">When did you finish?</label>
+                <input class="top-inputs" step="300" min="0" max="23" type="time" name="endTime" required>
             </div>
             <div class="form-group">
-                <input class="top-inputs" step="any" min="0" max="23" type="number" name="lunchTime" placeholder="Time taken for lunch?" required>
+                <label for="start-time">Time taken for lunch?</label>
+                <input class="top-inputs" step="300" min="0" max="23" type="time" value=":" name="lunchTime" required>
             </div>
             <div class="form-group">
                 <input class="top-inputs button" type="submit">
@@ -56,12 +56,12 @@
                                 <%= shift.finishTime %>
                             </td>
                             <td>
-                                <%= shift.lunchTime %>
+                                <%= functions.timeFormatter(shift.lunchTime) %>
                             </td>
                             <td class="totalShiftHours">
-                                <%= functions.timeFormatter(shift.totalShiftHours) %>
+                                <%= functions.timeFormatter(functions.convertToTime(shift.totalShiftHours)) %>
                             </td>
-                            <% total += functions.totalHours(shift.startTime, shift.finishTime, shift.lunchTime) %>
+                            <% total += +shift.totalShiftHours%>
 
                                 <td class="edit">
                                     <a href="/<%= month._id%>/shift/<%= shift._id%>/edit">
@@ -77,12 +77,11 @@
 
                         </tr>
                         <% } %>
-
             </table>
             <p class="hours-worked">
                 Total hours worked in
                 <strong><%= month.month %>:</strong>
-                <span class="large-time"><%= functions.timeFormatter(total) %></span>
+                <span class="large-time"><%= functions.timeFormatter(functions.convertToTime(total.toString())) %></span>
 
             </p>
         </div>

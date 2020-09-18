@@ -98,7 +98,7 @@ body {
   padding: 7px 0;
   color: #fff;
   border: none;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   text-align: center;
   width: 100%;
 }
@@ -120,11 +120,27 @@ body {
 }
 
 .form-group .top-inputs:focus, .form-group .top-inputs:active {
-  border: 1px solid #fff;
-  background-color: #fff;
-  color: #F37871;
+  border: 1px solid #fdf5a2;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
   -webkit-transition: .2s linear;
   transition: .2s linear;
+}
+
+.form-group .top-inputs:focus::-webkit-input-placeholder, .form-group .top-inputs:active::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+.form-group .top-inputs:focus:-ms-input-placeholder, .form-group .top-inputs:active:-ms-input-placeholder {
+  opacity: 0;
+}
+
+.form-group .top-inputs:focus::-ms-input-placeholder, .form-group .top-inputs:active::-ms-input-placeholder {
+  opacity: 0;
+}
+
+.form-group .top-inputs:focus::placeholder, .form-group .top-inputs:active::placeholder {
+  opacity: 0;
 }
 
 .form-group .button {
@@ -136,6 +152,7 @@ body {
 
 .form-group .button:hover, .form-group .button:focus, .form-group .button:active {
   border: none;
+  border-bottom: 1px solid #fdf5a2;
   -webkit-transition: .2s linear;
   transition: .2s linear;
   background-color: #fdf5a2;
@@ -170,6 +187,7 @@ main .shifts-header {
 
 main select {
   background-color: transparent;
+  -webkit-appearance: none;
   font-size: .9rem;
   color: #fdf5a2;
   font-weight: 600;

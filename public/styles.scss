@@ -107,7 +107,7 @@ body {
         padding: 7px 0;
         color: $white;
         border: none;
-        border-bottom: 1px solid $white;
+        border-bottom: 1px solid rgba(255, 255, 255, .3);
         text-align: center;
         width: 100%;
         &::placeholder {
@@ -115,10 +115,13 @@ body {
         }
         &:focus,
         &:active {
-            border: 1px solid $white;
-            background-color: $white;
-            color: $darkSalmon;
+            border: 1px solid $yellow;
+            background-color: rgba(255, 255, 255, .2);
+            color: $white;
             transition: .2s linear;
+            &::placeholder {
+                opacity: 0;
+            }
         }
     }
     .button {
@@ -130,6 +133,7 @@ body {
         &:focus,
         &:active {
             border: none;
+            border-bottom: 1px solid $yellow;
             transition: .2s linear;
             background-color: $yellow;
             color: $darkSalmon;
@@ -146,6 +150,7 @@ main {
     }
     select {
         background-color: transparent;
+        -webkit-appearance: none;
         font-size: .9rem;
         color: $yellow;
         font-weight: 600;

@@ -5,7 +5,7 @@ const shiftSchema = new mongoose.Schema({
     date: Number,
     startTime: String,
     finishTime: String,
-    lunchTime: Number,
+    lunchTime: String,
     totalShiftHours: String
 });
 

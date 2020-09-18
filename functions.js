@@ -1,37 +1,57 @@
 const totalHours = (start, finish, lunch) => {
-    let startTime = convertToDecimal(start);
-    let finishTime = convertToDecimal(finish);
-    let total = finishTime - startTime - lunch;
-    return convertToTime(total.toString());
+    const startTime = convertToDecimal(start);
+    const finishTime = convertToDecimal(finish);
+    const lunchTime = convertToDecimal(lunch)
+    const total = finishTime - startTime - lunchTime;
+    return total.toString();
 }
-const convertToDecimal = time => {
-    let newTime = time.replace(/(:)/g, '.').replace(/(\.\d+)/g, function(el) {
-        let sum = (Number(el) / 60) * 100;
-        let rounded = Math.round((sum + Number.EPSILON) * 100) / 100;
-        return rounded.toString().slice(1)
-    })
-    return newTime;
-}
-
 const convertToTime = time => {
-    let returnedTime = time.replace(/(\.\d+)/g, function(el) {
-        let m = Math.round(Number(el) * 60);
-        return `.${m}`
-    });
-    return returnedTime.length <= 2 ? Number(`${returnedTime}`) + .00 : returnedTime.split('.')[1].length < 2 ? Number(`${returnedTime}`) + 0 : Number(returnedTime);
+    let [h, m] = time.split(/[.:]/);
+    h = h || 0;
+    m = m || 0;
+    if (m.length > 2) {
+        m = m.slice(0, 2);
+    }
+    m = `.${m}`;
+    m = Math.round(+m * 60).toString();
+    return m.length === 1 ? `${h}.0${m}` : `${h}.${m}`
 };
-const timeFormatter = time => {
-    let timeStr = time.toString();
-    let hrs = timeStr.split('.')[0];
-    let mins = timeStr.split('.')[1];
-    return timeStr.includes('.') ? `${hrs} hrs ${mins} mins` : `${hrs} hrs`
+
+const convertToDecimal = time => {
+    let [h, m] = time.split(/[.:]/);
+    h = h || 0;
+    m = m || 0;
+    return (+h + +m / 60);
 }
 
-console.log(timeFormatter(7.5))
+const timeFormatter = unformattedTime => {
+    let [h, m] = unformattedTime.split(/[.:]/);
+    h = h || 0;
+    m = m || 0;
+    if (m[0] === '0') {
+        m = m.substring(1);
+    }
+    if (h[0] === '0') {
+        h = h.substring(1);
+    }
+    if (h === '0' && m === '0') return `0`;
+    else if (m === '0' || m === '') return `${h} hrs`;
+    else if (h === '0' || h === '') return `${m} mins`;
+    else return `${h} hours ${m} mins`;
+}
+
+function ignoreFavicon(req, res, next) {
+    if (req.originalUrl === '/favicon.ico') {
+        res.status(204).json({ nope: true });
+    } else {
+        next();
+    }
+}
 
 module.exports = {
     totalHours: totalHours,
     convertToDecimal: convertToDecimal,
     convertToTime: convertToTime,
-    timeFormatter: timeFormatter
+    timeFormatter: timeFormatter,
+    ignoreFavicon: ignoreFavicon
 }

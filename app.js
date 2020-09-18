@@ -14,7 +14,7 @@ const day = newDate.getDate();
 const month = newDate.toLocaleString('default', { month: 'long' });
 
 // ----------- App.use, set & listen ---------------//
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 
 
@@ -22,6 +22,7 @@ app.set('view engine', 'ejs');
 app.listen(3000, () => console.log("I'm listening"));
 mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 app.use(express.static(__dirname + '/public'));
+app.use(functions.ignoreFavicon);
 
 // ----------- Schemas ---------------//
 const Month = require('./models/month');
@@ -31,6 +32,12 @@ const Shift = require('./models/shift');
 //     if (err) { console.log(err) } else { console.log(`${newMonth.month} added`) }
 // });
 
+// ==============================================================================
+
+
+
+
+// ==============================================================================
 
 // INDEX ROUTE
 app.get('/', (req, res) => {
@@ -68,7 +75,7 @@ app.get('/:id', (req, res) => {
 app.post('/:id', (req, res) => {
     const startTime = req.body.startTime;
     const finishTime = req.body.endTime;
-    const lunchTime = Number(req.body.lunchTime);
+    const lunchTime = req.body.lunchTime;
     const totalShiftHours = functions.totalHours(startTime, finishTime, lunchTime);
     const newShift = {
         date: day,
@@ -78,7 +85,9 @@ app.post('/:id', (req, res) => {
         totalShiftHours: totalShiftHours
     };
     Month.findById(req.params.id, (err, foundMonth) => {
+        console.log(req.params.id)
         Shift.create(newShift, (err, newShift) => {
+            console.log(newShift)
             if (err) {
                 console.log(err)
             } else {
@@ -104,7 +113,7 @@ app.get('/:id/shift/:shift_id/edit', (req, res) => {
 app.put('/:id/shift/:shift_id', (req, res) => {
     const startTime = req.body.startTime;
     const finishTime = req.body.endTime;
-    const lunchTime = Number(req.body.lunchTime);
+    const lunchTime = req.body.lunchTime;
     const date = Number(req.body.date);
     const totalShiftHours = functions.totalHours(startTime, finishTime, lunchTime);
     const newShift = {
