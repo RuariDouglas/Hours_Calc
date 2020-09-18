@@ -10,21 +10,21 @@
         <form action="/<%= month._id%>/shift/<%= shift._id %>?_method=put" method="POST" autocomplete="off">
             <div class="form-group">
                 <label for="start-time">When did you start?</label>
-                <input class="top-inputs" value="<%=shift.startTime%>" step="any" min="0" max="23" type="time" id="start-time" name="startTime" required>
+                <input class="top-inputs" min="0" max="23" type="time" id="start-time" name="startTime" value="<%=shift.startTime%>" required>
             </div>
             <div class="form-group">
-                <label for="start-time">When did you finish?</label>
-                <input class="top-inputs" value="<%=shift.finishTime%>" step="any" min="0" max="23" type="time" name="endTime" required>
+                <label for="end-time">When did you finish?</label>
+                <input class="top-inputs" step="300" min="0" max="23" type="time" id="end-time" name="endTime" value="<%=shift.finishTime%>" required>
             </div>
             <div class="form-group">
-                <input class="top-inputs" value="<%=shift.lunchTime%>" step="any" min="0" max="23" type="number" name="lunchTime" required>
-                <input class="top-inputs" value="<%=shift.date%>" step="any" min="0" max="23" type="number" name="date" required>
+                <label for="lunchTime">Time taken for lunch?</label>
+                <input class="top-inputs" step="300" min="0" max="23" type="time" id="lunch-time" value="<%=shift.lunchTime%>" name="lunchTime" required>
             </div>
             <div class="form-group">
-                <input class="top-inputs button" type="submit">
+                <input class="top-inputs button" value="Submit" type="submit">
             </div>
         </form>
-        <button><a href="/<%=month._id%>">Back</a></button>
+        <a class="back" href="/<%=month._id%>">Back</a>
     </div>
 
 

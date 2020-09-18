@@ -79,6 +79,10 @@ body {
         color: $yellow;
         font-size: 1.6rem;
     }
+    h4 {
+        color: $yellow;
+        font-size: 1.6rem;
+    }
     p {
         margin-top: 0;
         margin-bottom: .4rem;
@@ -86,6 +90,20 @@ body {
         color: $white;
         opacity: .4;
         font-style: italic;
+    }
+    a.back {
+        background: transparent;
+        text-decoration: none;
+        font-weight: bold;
+        color: #fdf5a2;
+        outline: none;
+        border: 1px solid #fdf5a2;
+        padding: 2px 20px;
+        font-size: .9rem;
+        &:hover {
+            background-color: $yellow;
+            color: $darkSalmon;
+        }
     }
 }
 

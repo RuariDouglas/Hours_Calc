@@ -68,6 +68,11 @@ body {
   font-size: 1.6rem;
 }
 
+.container h4 {
+  color: #fdf5a2;
+  font-size: 1.6rem;
+}
+
 .container p {
   margin-top: 0;
   margin-bottom: .4rem;
@@ -75,6 +80,22 @@ body {
   color: #fff;
   opacity: .4;
   font-style: italic;
+}
+
+.container a.back {
+  background: transparent;
+  text-decoration: none;
+  font-weight: bold;
+  color: #fdf5a2;
+  outline: none;
+  border: 1px solid #fdf5a2;
+  padding: 2px 20px;
+  font-size: .9rem;
+}
+
+.container a.back:hover {
+  background-color: #fdf5a2;
+  color: #F37871;
 }
 
 .form-group {
