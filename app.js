@@ -16,6 +16,10 @@ const indexRoutes = require('./routes/index');
 const monthRoutes = require('./routes/months');
 const shiftRoutes = require('./routes/shifts');
 
+// ------------ Schemas ------------- //
+const Month = require('./models/month');
+const Shift = require('./models/shift');
+const User = require('./models/user');
 // Seeder //
 const seedDB = require('./seeds');
 //seedDB();
@@ -32,7 +36,7 @@ app.use(methodOverride('_method'));
 // Passport
 app.use(require('express-session')({
     secret: 'Sit down, be humble',
-    ressave: false,
+    resave: false,
     saveUninitialized: false
 }));
 app.use(passport.initialize());
@@ -40,6 +44,10 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+app.use(function(req, res, next) {
+    res.locals.currentUser = req.user;
+    next();
+});
 
 // Routes
 app.use(indexRoutes);

@@ -40,6 +40,17 @@ const timeFormatter = unformattedTime => {
     else return `${h} hours ${m} mins`;
 }
 
+
+
+// ----------- Middleware ------------- //
+// Logged in?
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/login');
+}
+// Ignore favicon
 function ignoreFavicon(req, res, next) {
     if (req.originalUrl === '/favicon.ico') {
         res.status(204).json({ nope: true });
@@ -48,10 +59,12 @@ function ignoreFavicon(req, res, next) {
     }
 }
 
+// ----------- Export ------------- //
 module.exports = {
     totalHours: totalHours,
     convertToDecimal: convertToDecimal,
     convertToTime: convertToTime,
     timeFormatter: timeFormatter,
-    ignoreFavicon: ignoreFavicon
+    ignoreFavicon: ignoreFavicon,
+    isLoggedIn: isLoggedIn
 }

@@ -11,3 +11,11 @@
 </head>
 
 <body>
+    <% if (currentUser) { %>
+        <p>
+            <%= currentUser.username %> is logged in
+        </p>
+        <a href="/logout">Logout</a>
+        <% } else { %>
+            <a href="/login">Login</a>
+            <% } %>
