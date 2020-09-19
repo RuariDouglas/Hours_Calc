@@ -9,6 +9,8 @@ const methodOverride = require('method-override');
 // ----------- Models ---------------//
 const Month = require('../models/month');
 const Shift = require('../models/shift');
+const User = require('../models/user');
+
 
 // ----------- Variables ---------------//
 const newDate = new Date();

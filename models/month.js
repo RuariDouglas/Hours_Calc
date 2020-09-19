@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Shift = require('./shift');
+const passportLocalMongoose = require('passport-local-mongoose');
 
 // Month.create({ month: 'December' }, (err, newMonth) => {
 //     if (err) { console.log(err) } else { console.log(`${newMonth.month} added`) }
