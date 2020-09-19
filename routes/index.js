@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const functions = require('../functions.js');
+const functions = require('../functions')
 const methodOverride = require('method-override');
 
 // ----------- Models ---------------//

@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const functions = require('../functions.js');
+const functions = require('../functions');
 const methodOverride = require('method-override');
 
 // ----------- Models ---------------//
@@ -20,11 +20,9 @@ const month = newDate.toLocaleString('default', { month: 'long' });
 router.get('/:id', (req, res) => {
     Month.find({}, (err, allMonths) => {
         Month.findById(req.params.id).populate('shifts').exec((err, foundMonth) => {
-            // console.log(req.params.id)
             if (err) {
                 console.log(err);
             } else {
-                console.log(foundMonth)
                 res.render('show', { month: foundMonth, allMonths: allMonths, functions: functions })
             }
         })
@@ -44,9 +42,7 @@ router.post('/:id', (req, res) => {
         totalShiftHours: totalShiftHours
     };
     Month.findById(req.params.id, (err, foundMonth) => {
-        console.log(req.params.id)
         Shift.create(newShift, (err, newShift) => {
-            console.log(newShift)
             if (err) {
                 console.log(err)
             } else {
@@ -59,5 +55,4 @@ router.post('/:id', (req, res) => {
 
     });
 });
-
 module.exports = router;
