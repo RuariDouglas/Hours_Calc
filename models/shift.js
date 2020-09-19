@@ -5,7 +5,14 @@ const shiftSchema = new mongoose.Schema({
     startTime: String,
     finishTime: String,
     lunchTime: String,
-    totalShiftHours: String
+    totalShiftHours: String,
+    author: {
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        username: String
+    }
 });
 
 module.exports = mongoose.model('Shift', shiftSchema);

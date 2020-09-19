@@ -27,7 +27,7 @@ const seedDB = require('./seeds');
 // ----------- App.use, set & listen ---------------//
 app.listen(3000, () => console.log("I'm listening"));
 app.set('view engine', 'ejs');
-mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 app.use(express.static(__dirname + '/public'));
 app.use(functions.ignoreFavicon);
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -45,38 +45,39 @@
                 </tr>
                 <% let total = 0 %>
                     <% for(let shift of month.shifts){ %>
-                        <tr class="table-entries-row">
-                            <td class="theDay">
-                                <%= shift.date %>
-                            </td>
-                            <td>
-                                <%= shift.startTime %>
-                            </td>
-                            <td>
-                                <%= shift.finishTime %>
-                            </td>
-                            <td>
-                                <%= functions.timeFormatter(shift.lunchTime) %>
-                            </td>
-                            <td class="totalShiftHours">
-                                <%= functions.timeFormatter(functions.convertToTime(shift.totalShiftHours)) %>
-                            </td>
-                            <% total += +shift.totalShiftHours%>
-
-                                <td class="edit">
-                                    <a href="/<%= month._id%>/shift/<%= shift._id%>/edit">
-                                        <button type="button"><i class="far fa-edit"></i> Edit</button>
-                                    </a>
-
+                        <% if (shift.author.id == currentUser.id) { %>
+                            <tr class="table-entries-row">
+                                <td class="theDay">
+                                    <%= shift.date %>
                                 </td>
-                                <td class="delete">
-                                    <form action="/<%= month._id%>/shift/<%= shift._id%>?_method=DELETE" method="POST">
-                                        <button name="_method" href="/<%= month._id%>"><i class="far fa-trash-alt"></i> Delete</button>
-                                    </form>
+                                <td>
+                                    <%= shift.startTime %>
                                 </td>
+                                <td>
+                                    <%= shift.finishTime %>
+                                </td>
+                                <td>
+                                    <%= functions.timeFormatter(shift.lunchTime) %>
+                                </td>
+                                <td class="totalShiftHours">
+                                    <%= functions.timeFormatter(functions.convertToTime(shift.totalShiftHours)) %>
+                                </td>
+                                <% total += +shift.totalShiftHours%>
+                                    <td class="edit">
+                                        <a href="/<%= month._id%>/shift/<%= shift._id%>/edit">
+                                            <button type="button"><i class="far fa-edit"></i> Edit</button>
+                                        </a>
 
-                        </tr>
-                        <% } %>
+                                    </td>
+                                    <td class="delete">
+                                        <form action="/<%= month._id%>/shift/<%= shift._id%>?_method=DELETE" method="POST">
+                                            <button name="_method" href="/<%= month._id%>"><i class="far fa-trash-alt"></i> Delete</button>
+                                        </form>
+                                    </td>
+
+                            </tr>
+                            <% } %>
+                                <% } %>
             </table>
             <p class="hours-worked">
                 Total hours worked in

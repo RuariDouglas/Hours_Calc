@@ -42,12 +42,14 @@ router.post('/:id', (req, res) => {
         totalShiftHours: totalShiftHours
     };
     Month.findById(req.params.id, (err, foundMonth) => {
-        Shift.create(newShift, (err, newShift) => {
+        Shift.create(newShift, (err, shift) => {
             if (err) {
                 console.log(err)
             } else {
-                newShift.save();
-                foundMonth.shifts.push(newShift);
+                shift.author.id = req.user._id;
+                shift.author.username = req.user.username;
+                shift.save();
+                foundMonth.shifts.push(shift);
                 foundMonth.save();
                 res.redirect('back')
             }
