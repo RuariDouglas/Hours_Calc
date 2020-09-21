@@ -16,7 +16,7 @@ const day = newDate.getDate();
 const month = newDate.toLocaleString('default', { month: 'long' });
 
 // EDIT
-router.get('/:id/shift/:shift_id/edit', (req, res) => {
+router.get('/:id/shift/:shift_id/edit', functions.isLoggedIn, (req, res) => {
     Month.findById(req.params.id, (err, foundMonth) => {
         Shift.findById(req.params.shift_id, (err, foundShift) => {
             res.render('edit', { month: foundMonth, shift: foundShift, functions: functions })
@@ -25,7 +25,7 @@ router.get('/:id/shift/:shift_id/edit', (req, res) => {
 });
 
 // UPDATE
-router.put('/:id/shift/:shift_id', (req, res) => {
+router.put('/:id/shift/:shift_id', functions.isLoggedIn, (req, res) => {
     const startTime = req.body.startTime;
     const finishTime = req.body.endTime;
     const lunchTime = req.body.lunchTime;
@@ -42,21 +42,25 @@ router.put('/:id/shift/:shift_id', (req, res) => {
             console.log(err)
             res.redirect('back');
         } else {
+            req.flash('success', `Shift updated`)
             res.redirect(`/${req.params.id}`)
         }
     });
 });
 
 // DELETE
-router.delete('/:id/shift/:shift_id', (req, res) => {
+router.delete('/:id/shift/:shift_id', functions.isLoggedIn, (req, res) => {
     Shift.findByIdAndDelete(req.params.shift_id, (err, deletedShift) => {
         if (err) {
+            req.flash('error', err.message)
             console.log(err);
         } else {
             Month.updateOne({ _id: req.params.id }, { $pull: { shifts: { $in: req.params.shift_id } } }, (err, updated) => {
                 if (err) {
                     console.log(err);
                 } else {
+                    console.log(updated)
+                    req.flash('success', `Deleted!`)
                     res.redirect(`/${req.params.id}`);
                 }
             });

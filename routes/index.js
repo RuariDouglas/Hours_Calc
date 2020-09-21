@@ -19,19 +19,9 @@ const day = newDate.getDate();
 const month = newDate.toLocaleString('default', { month: 'long' });
 
 // INDEX ROUTE
-router.get('/', functions.isLoggedIn, (req, res) => {
+router.get('/', (req, res) => {
     Month.find({ month: { $in: month } }, (err, foundMonth) => {
-        if (foundMonth.length === 0) {
-            Month.create({ month: month }, (err, createdMonth) => {
-                if (err) {
-                    console.log(err);
-                } else {
-                    res.redirect(`/${createdMonth._id}`);
-                }
-            });
-        } else {
-            res.redirect(`/${foundMonth[0]._id}`);
-        }
+        res.redirect(`/${foundMonth[0]._id}`);
     });
 });
 
@@ -44,13 +34,12 @@ router.get('/login', (req, res) => {
 router.post('/login', passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login'
-}), (req, res) => {
-
-});
+}), (req, res) => {});
 // ----------- Logout ---------------//
 router.get('/logout', (req, res) => {
     req.logOut();
-    res.redirect('/');
+    req.flash('success', 'You signed out');
+    res.redirect('/login');
 })
 
 // ----------- Register ---------------//
@@ -65,9 +54,11 @@ router.post('/register', (req, res) => {
     User.register(new User({ username: username }), password, (err, user) => {
         if (err) {
             console.log();
+            req.flash('error', err.message);
             return res.render('register');
         }
         passport.authenticate('local')(req, res, function() {
+            req.flash('success', `Thankyou for registering ${user.username}`);
             res.redirect('/')
         });
     })

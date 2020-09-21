@@ -1,14 +1,26 @@
-<h1>Register Page</h1>
-<form action="/register" method="POST">
-    <div class="form-group">
-        <input type="text" placeholder="username" name="username" class="top-input">
+<%- include("partials/header") %>
+    <div class="container container-login">
+        <h1 class="title">
+            <span class="light">Hours</span> Calculator
+        </h1>
+        <h4>Register</h4>
+        <form action="/register" method="POST">
+            <div class="form-group">
+                <input type="text" placeholder="Enter a username" name="username" class="top-inputs">
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Create a password" name="password" class="top-inputs">
+            </div>
+            <div class="form-group">
+                <input class="top-inputs button" value="Submit" type="submit">
+            </div>
+        </form>
+        <div class="form-group">
+            <p class="register">Already have an account?</p>
+            <a class="back" href="/login">Login</a>
+        </div>
     </div>
-    <div class="form-group">
-        <input type="password" placeholder="password" name="password" class="top-input">
-    </div>
-    <div class="form-group">
-        <button type="submit">
-            Submit
-        </button>
-    </div>
-</form>
+
+
+
+    <%- include("partials/footer") %>

@@ -1,12 +1,12 @@
 <%- include("partials/header") %>
-    <div class="container">
+    <div class="container container-login">
         <h1 class="title">
             <span class="light">Hours</span> Calculator
         </h1>
-        <h4>Edit your shift for
+        <p class="edit-text">Edit your shift for
             <%= month.month %>
                 <%= shift.date %>
-        </h4>
+        </p>
         <form action="/<%= month._id%>/shift/<%= shift._id %>?_method=put" method="POST" autocomplete="off">
             <div class="form-group">
                 <label for="start-time">When did you start?</label>

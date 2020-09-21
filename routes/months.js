@@ -17,7 +17,7 @@ const month = newDate.toLocaleString('default', { month: 'long' });
 
 // ----------- Routes ---------------//
 // SHOW
-router.get('/:id', (req, res) => {
+router.get('/:id', functions.isLoggedIn, (req, res) => {
     Month.find({}, (err, allMonths) => {
         Month.findById(req.params.id).populate('shifts').exec((err, foundMonth) => {
             if (err) {
@@ -29,7 +29,7 @@ router.get('/:id', (req, res) => {
     })
 });
 // CREATE (NEW SHIFT IN MONTH)
-router.post('/:id', (req, res) => {
+router.post('/:id', functions.isLoggedIn, (req, res) => {
     const startTime = req.body.startTime;
     const finishTime = req.body.endTime;
     const lunchTime = req.body.lunchTime;
@@ -44,6 +44,7 @@ router.post('/:id', (req, res) => {
     Month.findById(req.params.id, (err, foundMonth) => {
         Shift.create(newShift, (err, shift) => {
             if (err) {
+                req.flash('error', error.message);
                 console.log(err)
             } else {
                 shift.author.id = req.user._id;
@@ -51,7 +52,8 @@ router.post('/:id', (req, res) => {
                 shift.save();
                 foundMonth.shifts.push(shift);
                 foundMonth.save();
-                res.redirect('back')
+                req.flash('success', `New shift added for ${foundMonth.month}: ${day}`)
+                res.redirect('back');
             }
         })
 
