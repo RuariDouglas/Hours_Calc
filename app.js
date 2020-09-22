@@ -57,3 +57,20 @@ app.use(function(req, res, next) {
 app.use(indexRoutes);
 app.use(monthRoutes);
 app.use(shiftRoutes);
+
+// Error cover
+app.use(function(req, res, next) {
+    res.status(404);
+
+    res.format({
+        html: function() {
+            res.render('404', { url: req.url })
+        },
+        json: function() {
+            res.json({ error: 'Not found' })
+        },
+        default: function() {
+            res.type('txt').send('Not found')
+        }
+    })
+});
