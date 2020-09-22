@@ -172,7 +172,8 @@ body .bar .bar-wrapper p a:hover {
   body .container h1.title {
     margin: 10px 0 20px;
   }
-  body .container .hours-form {
+  body .container .hours-form,
+  body .container .edit-form {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -184,14 +185,20 @@ body .bar .bar-wrapper p a:hover {
             align-items: flex-end;
     width: 100%;
   }
-  body .container .hours-form .form-group {
-    width: 24%;
+  body .container .hours-form .form-group,
+  body .container .edit-form .form-group {
+    width: 19%;
   }
-  body .container .hours-form .form-group input {
+  body .container .hours-form .form-group input,
+  body .container .edit-form .form-group input {
     margin-top: 5px;
   }
-  body .container .hours-form .form-group .button {
+  body .container .hours-form .form-group .button,
+  body .container .edit-form .form-group .button {
     padding: 8px 20px;
+  }
+  body .container .edit-form .form-group {
+    width: 24%;
   }
   body .container #alert {
     max-width: 768px;
@@ -238,8 +245,13 @@ body .bar .bar-wrapper p a:hover {
   margin: 10px 0 20px;
 }
 
-.container h1.title .light {
+.container .light {
   font-weight: 200;
+}
+
+.container .label-light {
+  font-weight: 200;
+  font-size: .8rem;
 }
 
 .container h2.month-title {
@@ -262,12 +274,34 @@ body .bar .bar-wrapper p a:hover {
 }
 
 .container p.edit-text {
-  color: #fdf5a2;
+  font-size: .9rem;
   font-style: normal;
+  padding: 10px 0;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 15px auto;
+  border: 1px solid rgba(253, 245, 162, 0.4);
+  text-align: center;
+}
+
+.container p.spacer {
   margin-bottom: 10px;
 }
 
 .container a.back {
+  font-size: .9rem;
+  text-decoration: none;
+  font-weight: bold;
+  color: #fdf5a2;
+  margin: 13px auto;
+  display: block;
+}
+
+.container a.back:hover {
+  text-decoration: underline;
+}
+
+.container a.register {
   font-size: .9rem;
   background: transparent;
   text-decoration: none;
@@ -281,7 +315,7 @@ body .bar .bar-wrapper p a:hover {
   margin: 10px auto;
 }
 
-.container a.back:hover {
+.container a.register:hover {
   background-color: #fdf5a2;
   color: #F37871;
 }
@@ -301,11 +335,12 @@ body .bar .bar-wrapper p a:hover {
 .form-group {
   margin-bottom: .3rem !important;
   text-align: center;
+  line-height: 1rem;
 }
 
 .form-group label {
   font-size: .9rem;
-  font-weight: 600;
+  font-weight: 400;
   margin: 0;
   color: white;
 }

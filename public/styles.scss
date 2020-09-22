@@ -150,19 +150,25 @@
                 h1.title {
                     margin: 10px 0 20px;
                 }
-                .hours-form {
+                .hours-form,
+                .edit-form {
                     display: flex;
                     justify-content: space-between;
                     align-items: flex-end;
                     width: 100%;
                     .form-group {
-                        width: 24%;
+                        width: 19%;
                         input {
                             margin-top: 5px;
                         }
                         .button {
                             padding: 8px 20px;
                         }
+                    }
+                }
+                .edit-form {
+                    .form-group {
+                        width: 24%;
                     }
                 }
                 #alert {
@@ -204,10 +210,14 @@
             font-family: 'Montserrat', sans-serif;
             color: $white;
             font-weight: 600;
-            .light {
-                font-weight: 200;
-            }
             margin: 10px 0 20px;
+        }
+        .light {
+            font-weight: 200;
+        }
+        .label-light {
+            font-weight: 200;
+            font-size: .8rem;
         }
         h2.month-title {
             color: $yellow;
@@ -226,12 +236,30 @@
             font-style: italic;
         }
         p.edit-text {
-            color: $yellow;
+            @include fontMed;
             font-style: normal;
+            padding: 10px 0;
+            color: #fff;
+            background-color: rgba(255, 255, 255, .2);
+            margin: 15px auto;
+            border: 1px solid rgba(253, 245, 162, .4);
+            text-align: center;
+        }
+        p.spacer {
             margin-bottom: 10px;
-            ;
         }
         a.back {
+            @include fontMed;
+            text-decoration: none;
+            font-weight: bold;
+            color: #fdf5a2;
+            margin: 13px auto;
+            display: block;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        a.register {
             @include fontMed;
             background: transparent;
             text-decoration: none;
@@ -263,9 +291,10 @@
     .form-group {
         margin-bottom: .3rem !important;
         text-align: center;
+        line-height: 1rem;
         label {
             @include fontMed;
-            font-weight: 600;
+            font-weight: 400;
             margin: 0;
             color: white;
         }

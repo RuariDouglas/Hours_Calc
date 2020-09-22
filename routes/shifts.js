@@ -20,7 +20,7 @@ router.get('/:id/shift/:shift_id/edit', functions.isLoggedIn, (req, res) => {
     Month.findById(req.params.id, (err, foundMonth) => {
         Shift.findById(req.params.shift_id, (err, foundShift) => {
             res.render('edit', { month: foundMonth, shift: foundShift, functions: functions })
-        });
+        })
     });
 });
 

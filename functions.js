@@ -44,13 +44,14 @@ const timeFormatter = unformattedTime => {
 
 // ----------- Middleware ------------- //
 // Logged in?
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
+const isLoggedIn = (req, res, next) => {
+        if (req.isAuthenticated()) {
+            return next();
+        } else {
+            res.redirect('/login');
+        }
     }
-    res.redirect('/login');
-}
-// Ignore favicon
+    // Ignore favicon
 function ignoreFavicon(req, res, next) {
     if (req.originalUrl === '/favicon.ico') {
         res.status(204).json({ nope: true });

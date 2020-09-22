@@ -26,16 +26,17 @@ router.get('/:id', functions.isLoggedIn, (req, res) => {
                 res.render('show', { month: foundMonth, allMonths: allMonths, functions: functions })
             }
         })
-    })
+    });
 });
 // CREATE (NEW SHIFT IN MONTH)
 router.post('/:id', functions.isLoggedIn, (req, res) => {
+    const userDay = req.body.date;
     const startTime = req.body.startTime;
     const finishTime = req.body.endTime;
     const lunchTime = req.body.lunchTime;
     const totalShiftHours = functions.totalHours(startTime, finishTime, lunchTime);
     const newShift = {
-        date: day,
+        date: userDay || day,
         startTime: startTime,
         finishTime: finishTime,
         lunchTime: lunchTime,
@@ -52,7 +53,7 @@ router.post('/:id', functions.isLoggedIn, (req, res) => {
                 shift.save();
                 foundMonth.shifts.push(shift);
                 foundMonth.save();
-                req.flash('success', `New shift added for ${foundMonth.month}: ${day}</strong>`)
+                req.flash('success', `New shift added for ${foundMonth.month}: ${userDay}`)
                 res.redirect('back');
             }
         })
