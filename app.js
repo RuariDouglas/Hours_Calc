@@ -9,7 +9,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const passportLocalMongoose = require('passport-local-mongoose');
 require('dotenv').config();
-let DB_URL = process.env.DB_URL;
+const DB_URL = process.env.DB_URL;
 const functions = require('./functions');
 
 // ----------- Routes ---------------//
@@ -28,7 +28,15 @@ const seedDB = require('./seeds');
 // ----------- App.use, set & listen ---------------//
 app.listen(3000, () => console.log("I'm listening"));
 app.set('view engine', 'ejs');
-mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+mongoose.connect(DB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+}).then(() => {
+    console.log('Connected to DB')
+}).catch(err => {
+    console.log('Error', err.message);
+});
 app.use(express.static(__dirname + '/public'));
 app.use(functions.ignoreFavicon);
 app.use(bodyParser.urlencoded({ extended: false }));

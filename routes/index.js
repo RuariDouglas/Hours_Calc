@@ -44,7 +44,7 @@ router.get('/logout', (req, res) => {
 
 // ----------- Register ---------------//
 router.get('/register', (req, res) => {
-    res.render('register');
+    res.redirect('/login');
 });
 
 // CREATE (NEW USER)
