@@ -521,6 +521,7 @@ main table .table-header th {
 }
 
 main p.hours-worked {
+  font-weight: 200;
   text-align: left;
   margin-top: 5px;
 }

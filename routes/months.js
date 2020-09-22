@@ -52,7 +52,7 @@ router.post('/:id', functions.isLoggedIn, (req, res) => {
                 shift.save();
                 foundMonth.shifts.push(shift);
                 foundMonth.save();
-                req.flash('success', `New shift added for ${foundMonth.month}: ${day}`)
+                req.flash('success', `New shift added for ${foundMonth.month}: ${day}</strong>`)
                 res.redirect('back');
             }
         })
