@@ -26,7 +26,10 @@ const seedDB = require('./seeds');
 //seedDB();
 
 // ----------- App.use, set & listen ---------------//
-app.listen(3000, () => console.log("I'm listening"));
+const port = process.env.PORT || 3000;
+app.listen(port, function() {
+    console.log("Server Has Started!");
+});
 app.set('view engine', 'ejs');
 mongoose.connect(DB_URL, {
     useNewUrlParser: true,
