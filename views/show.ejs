@@ -5,25 +5,26 @@
         </h1>
         <form class="hours-form" action="/<%= month._id %>" method="POST" autocomplete="off">
             <div class="form-group">
-                <label for="start-time">Day?<span class="label-light"><br>(Leave blank if today)</span></label>
-                <input class="top-inputs" min="0" max="31" type="number" id="start-time" name="date" placeholder="...">
+                <label for="date"><a onclick="" data-tool-tip="E.g. The 21st = 21">Date? <i class="far fa-question-circle"></i></a></label>
+                <input class="top-inputs" min="0" max="31" type="number" id="date" name="date" placeholder="...">
             </div>
             <div class="form-group">
                 <label for="start-time">Start time?</label>
-                <input class="top-inputs" min="0" max="23" type="time" id="start-time" name="startTime" value=":" required>
+                <input class="top-inputs" min="0" max="23" type="text" id="start-time" name="startTime" onfocus="(this.type='time')" placeholder="hh:mm" required>
             </div>
             <div class="form-group">
                 <label for="end-time">Finish time?</label>
-                <input class="top-inputs" step="300" min="0" max="23" type="time" id="end-time" name="endTime" value=":" required>
+                <input class="top-inputs" step="300" min="0" max="23" type="text" id="end-time" name="endTime" onfocus="(this.type='time')" placeholder="hh:mm" required>
             </div>
             <div class="form-group">
-                <label for="lunchTime">Time taken for lunch?<span class="label-light"><br>(01:00 = 1 hour)</span></label>
-                <input class="top-inputs" step="300" min="0" max="23" type="time" id="lunch-time" value=":" name="lunchTime" required>
+                <label for="lunch-time"><a onclick="" data-tool-tip="01:45 = 1hr 45mins">Lunch time? <i class="far fa-question-circle"></i></a></label>
+                <input class="top-inputs" step="300" min="0" max="23" type="text" id="lunch-time" onfocus="(this.type='time')" placeholder="hh:mm" name="lunchTime" required>
             </div>
-            <div class="form-group">
+            <div class="form-group submit">
                 <input class="top-inputs button" value="Submit" type="submit">
             </div>
         </form>
+        <p class="disclaimer"> &#42;Please enter start and finish times in 24 hour format...</p>
     </div>
     <main>
         <div class="container">
@@ -83,14 +84,15 @@
                             <% } %>
                                 <% } %>
             </table>
-            <p class="hours-worked">
-                Total hours worked in
-                <strong><%= month.month %>:</strong><br>
-                <span class="large-time"><%= functions.timeFormatter(functions.convertToTime(total.toString())) %></span>
-
-            </p>
+            <div class="hours-text-container">
+                <p class="hours-worked">
+                    Total hours worked in <strong><%= month.month %>: </strong>
+                </p>
+                <p class="hours-worked">
+                    <span class="large-time"><%= functions.timeFormatter(functions.convertToTime(total.toString())) %></span>
+                </p>
+            </div>
         </div>
-
     </main>
     </div>
     <%- include("partials/footer") %>

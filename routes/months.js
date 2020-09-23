@@ -19,7 +19,7 @@ const month = newDate.toLocaleString('default', { month: 'long' });
 // SHOW
 router.get('/:id', functions.isLoggedIn, (req, res) => {
     Month.find({}, (err, allMonths) => {
-        Month.findById(req.params.id).populate('shifts').exec((err, foundMonth) => {
+        Month.findById(req.params.id).populate({ path: 'shifts', options: { sort: { date: 1 } } }).exec((err, foundMonth) => {
             if (err) {
                 console.log(err);
             } else {

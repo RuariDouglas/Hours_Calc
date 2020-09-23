@@ -21,7 +21,7 @@ router.get('/:id/shift/:shift_id/edit', functions.isLoggedIn, (req, res) => {
         Shift.findById(req.params.shift_id, (err, foundShift) => {
             res.render('edit', { month: foundMonth, shift: foundShift, functions: functions })
         })
-    });
+    })
 });
 
 // UPDATE
@@ -59,7 +59,6 @@ router.delete('/:id/shift/:shift_id', functions.isLoggedIn, (req, res) => {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log(updated)
                     req.flash('success', `Deleted!`)
                     res.redirect(`/${req.params.id}`);
                 }

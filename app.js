@@ -85,3 +85,79 @@ app.use(function(req, res, next) {
         }
     })
 });
+
+
+
+// FUNCTIONS
+
+const totalHours = (start, finish, lunch) => {
+    let startTime = convertToDecimal(start);
+    let finishTime = convertToDecimal(finish);
+    const lunchTime = convertToDecimal(lunch)
+    if (+startTime > +finishTime) {
+        let splitStart = splitTime(startTime);
+        let splitFinish = splitTime(finishTime);
+        let hours = 24 - +splitStart[0] + +splitFinish[0]
+        let mins = []
+        if (splitStart.length > 1) {
+            mins.push(splitStart[1].substring(0, 2));
+        }
+        if (splitFinish.length > 1) {
+            mins.push(splitFinish[1].substring(0, 2));
+        }
+        let m = Math.round(mins.sort((a, b) => {
+            return b - a;
+        }).reduce((acc, val, i) => {
+            return acc + val;
+        }) * 60 / 100).toString().substring(0, 2);
+        return m.length === 1 ? `${hours}.0${m}` : `${hours}.${m}`
+
+    }
+    /* FAILED TESTS
+    console.log(totalHours('22:10', '05:50', '00:00')) // 7.49 (7.40)
+    console.log(totalHours('22:20', '05:50', '00:00')) // 7.50 (7:30)
+    console.log(totalHours('22:05', '06:45', '00:00')) // 8.40 (8.45)
+
+
+    */
+}
+const splitTime = time => {
+    return time.toString().split(/[.:]/);
+
+}
+const convertToTime = time => {
+    let [h, m] = time.split(/[.:]/);
+    h = h || 0;
+    m = m || 0;
+    if (m.length > 2) {
+        m = m.slice(0, 2);
+    }
+    m = `.${m}`;
+    m = Math.round(+m * 60).toString();
+    return m.length === 1 ? `${h}.0${m}` : `${h}.${m}`
+};
+
+const convertToDecimal = time => {
+    let [h, m] = time.split(/[.:]/);
+    h = h || 0;
+    m = m || 0;
+    return (+h + +m / 60);
+}
+
+
+const timeFormatter = unformattedTime => {
+    let [h, m] = unformattedTime.split(/[.:]/);
+    h = h || 0;
+    m = m || 0;
+    if (m[0] === '0') {
+        m = m.substring(1);
+    }
+    if (h[0] === '0') {
+        h = h.substring(1);
+    }
+    if (h === '0' && m === '0') return `0`;
+    else if (m === '0' || m === '') return `${h} hrs`;
+    else if (h === '0' || h === '') return `${m} mins`;
+    else return `${h} hours ${m} mins`;
+}
+console.log(totalHours('22:05', '06:45', '00:00'))

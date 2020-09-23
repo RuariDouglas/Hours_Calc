@@ -38,13 +38,12 @@ router.post('/login', passport.authenticate('local', {
 // ----------- Logout ---------------//
 router.get('/logout', (req, res) => {
     req.logOut();
-    req.flash('success', 'You signed out');
     res.redirect('/login');
 })
 
 // ----------- Register ---------------//
 router.get('/register', (req, res) => {
-    res.redirect('/login');
+    res.render('register');
 });
 
 // CREATE (NEW USER)
@@ -53,7 +52,6 @@ router.post('/register', (req, res) => {
     const password = req.body.password;
     User.register(new User({ username: username }), password, (err, user) => {
         if (err) {
-            console.log();
             req.flash('error', err.message);
             return res.render('register');
         }

@@ -1,7 +1,7 @@
 const totalHours = (start, finish, lunch) => {
     const startTime = convertToDecimal(start);
     const finishTime = convertToDecimal(finish);
-    const lunchTime = convertToDecimal(lunch)
+    const lunchTime = convertToDecimal(lunch);
     const total = finishTime - startTime - lunchTime;
     return total.toString();
 }
@@ -39,6 +39,7 @@ const timeFormatter = unformattedTime => {
     else if (h === '0' || h === '') return `${m} mins`;
     else return `${h} hours ${m} mins`;
 }
+
 
 
 

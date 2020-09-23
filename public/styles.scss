@@ -1,143 +1,132 @@
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap');
-    // ------------------ RESET -------------------- //
-    html {
-        box-sizing: border-box;
-        font-size: 16px;
-        margin: auto;
-        height: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap');
+// ------------------ RESET -------------------- //
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+    margin: auto;
+    height: 100%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+// ------------------ VARIABLES -------------------- //
+$white: #fff;
+$orange: #f39971;
+$yellow: #fdf5a2;
+$lightSalmon: #F7AB99;
+$darkSalmon: #F37871;
+// ------------------ @MIXINS --------------------- //
+@mixin fontLg {
+    font-size: 1.2rem;
+}
+
+@mixin fontMed {
+    font-size: .9rem;
+}
+
+@mixin fontSm {
+    font-size: .8rem;
+}
+
+// ------------------ @keyframes --------------------- //
+@keyframes opacityAni {
+    0% {
+        opacity: 0;
     }
-    
-    *,
-    *:before,
-    *:after {
-        box-sizing: inherit;
+    100% {
+        opacity: 1;
     }
-    
-    body,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p,
-    ol,
-    ul {
-        margin: 0;
-        padding: 0;
-        font-weight: normal;
+}
+
+@keyframes flashMessage {
+    0% {
+        opacity: 0;
     }
-    
-    input:focus,
-    select:focus,
-    textarea:focus,
-    button:focus {
-        outline: none;
+    20% {
+        opacity: 1;
     }
-    
-    input[type="time"]::-webkit-calendar-picker-indicator {
-        display: none;
+    80% {
+        opacity: 1;
     }
-    
-    // ------------------ VARIABLES -------------------- //
-    $white: #fff;
-    $orange: #f39971;
-    $yellow: #fdf5a2;
-    $lightSalmon: #F7AB99;
-    $darkSalmon: #F37871;
-    // ------------------ @MIXINS --------------------- //
-    @mixin fontMed {
-        font-size: .9rem;
+    100% {
+        opacity: 0;
     }
-    
-    @mixin fontSm {
-        font-size: .8rem;
-    }
-    
-    // ------------------ @keyframes --------------------- //
-    @keyframes opacityAni {
-        0% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
-    
-    @keyframes flashMessage {
-        0% {
-            opacity: 0;
-        }
-        20% {
-            opacity: 1;
-        }
-        80% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 0;
-        }
-    }
-    
-    // ------------------ & NOW THE CODE --------------------- //
+}
+
+// ------------------ @media queries --------------------- //
+@media (min-width: 768px) {
     body {
-        background: #f39971;
-        background: linear-gradient(332deg, $darkSalmon 0%, $orange 100%);
-        margin: 0;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        font-family: 'Montserrat', sans-serif;
-        .bar {
-            width: 100%;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            .bar-wrapper {
-                margin: 0 auto;
+        .container-login {
+            max-width: 768px;
+            padding: 0 5%;
+        }
+        .container {
+            h1.title {
+                margin: 10px 0 20px;
+            }
+            .hours-form,
+            .edit-form {
                 display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
                 width: 100%;
-                justify-content: flex-end;
-                align-items: center;
-                height: 100%;
-                p {
-                    @include fontSm;
-                    opacity: 0;
-                    animation: opacityAni ease-in .3s forwards;
-                    text-decoration: none;
-                    text-align: center;
-                    color: rgba(255, 255, 255, .5);
-                    border-top: none;
-                    height: 100%;
-                    padding: 7px 5% 0 0;
-                    display: block;
-                    a {
-                        font-weight: bold;
-                        text-decoration: none;
-                        color: $yellow;
-                        &:hover {
-                            text-decoration: underline;
-                        }
-                    }
+                .form-group {
+                    width: 19%;
                 }
             }
+            .edit-form {
+                .form-group {
+                    width: 24%;
+                }
+            }
+            #alert {
+                max-width: 768px;
+            }
         }
-        h1.error-404 {
-            display: block;
-            width: auto;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: $yellow;
+        main table .table-header th {
+            @include fontMed;
+            line-height: 2rem;
         }
     }
-    
-    @media (min-width: 1024px) {
-        body .container {
+}
+
+@media (min-width: 1024px) {
+    body {
+        .container {
             max-width: 1024px;
-            padding: 0;
+            padding: 0 5%;
         }
-        body .bar .bar-wrapper {
+        .bar .bar-wrapper {
             max-width: 1024px;
             padding: 0;
             p {
@@ -147,318 +136,428 @@
         #alert {
             max-width: 1024px;
         }
-    }
-    
-    @media (min-width: 768px) {
-        body {
-            .container-login {
-                max-width: 768px;
-                padding: 0;
-            }
-            .container {
-                h1.title {
-                    margin: 10px 0 20px;
-                }
-                .hours-form,
-                .edit-form {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: flex-end;
-                    width: 100%;
-                    .form-group {
-                        width: 19%;
-                        input {
-                            margin-top: 5px;
-                        }
-                        .button {
-                            padding: 8px 20px;
-                        }
-                    }
-                }
-                .edit-form {
-                    .form-group {
-                        width: 24%;
-                    }
-                }
-                #alert {
-                    max-width: 768px;
-                }
-            }
-            main table .table-header th {
-                @include fontMed;
-                line-height: 2rem;
-            }
+        footer .footer-wrapper {
+            max-width: 1024px;
+            padding: 0 5%;
         }
     }
-    
-    #alert {
-        opacity: 0;
-        width: 90%;
-        height: 30px;
-        background-color: rgba(255, 255, 255, .2);
-        color: #F37871;
-        margin: 0 auto;
-        border: 1px solid rgba(253, 245, 162, .4);
-        text-align: center;
-        animation: flashMessage 5s linear;
-        p {
-            padding: 6px 0;
-            color: #fff;
-            @include fontMed;
-        }
+}
+
+// ------------------ & NOW THE CODE --------------------- //
+body {
+    background: #f39971;
+    background: linear-gradient(332deg, $darkSalmon 0%, $orange 100%);
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    h1 {
+        font-size: 2.8rem;
     }
-    
-    .container {
-        margin: 10px auto;
-        text-align: center;
+    .bar {
         width: 100%;
-        padding: 0 5% 0;
-        h1.title {
-            opacity: 0;
-            animation: opacityAni ease-in .2s forwards;
-            font-family: 'Montserrat', sans-serif;
-            color: $white;
-            font-weight: 600;
-            margin: 10px 0 20px;
-        }
-        .light {
-            font-weight: 200;
-        }
-        .label-light {
-            font-weight: 200;
-            font-size: .8rem;
-        }
-        h2.month-title {
-            color: $yellow;
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-        }
-        h4 {
-            color: $yellow;
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-        }
-        p {
-            @include fontMed;
-            margin-top: 0;
-            color: $white;
-            font-style: italic;
-        }
-        p.edit-text {
-            @include fontMed;
-            font-style: normal;
-            padding: 10px 0;
-            color: #fff;
-            background-color: rgba(255, 255, 255, .2);
-            margin: 15px auto;
-            border: 1px solid rgba(253, 245, 162, .4);
-            text-align: center;
-        }
-        p.spacer {
-            margin-bottom: 10px;
-        }
-        a.back {
-            @include fontMed;
-            text-decoration: none;
-            font-weight: bold;
-            color: #fdf5a2;
-            margin: 13px auto;
-            display: block;
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-        a.register {
-            @include fontMed;
-            background: transparent;
-            text-decoration: none;
-            font-weight: bold;
-            color: #fdf5a2;
-            outline: none;
-            border: 1px solid #fdf5a2;
-            padding: 5px 0;
-            display: block;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        .bar-wrapper {
+            margin: 0 auto;
+            display: flex;
             width: 100%;
-            margin: 10px auto;
-            &:hover {
-                background-color: $yellow;
-                color: $darkSalmon;
+            justify-content: flex-end;
+            align-items: center;
+            height: 100%;
+            p {
+                @include fontSm;
+                opacity: 0;
+                animation: opacityAni ease-in .3s forwards;
+                text-decoration: none;
+                text-align: center;
+                color: rgba(255, 255, 255, .5);
+                border-top: none;
+                height: 100%;
+                padding: 7px 5% 0 0;
+                display: block;
+                a {
+                    font-weight: bold;
+                    text-decoration: none;
+                    color: $yellow;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
             }
         }
     }
-    
-    .container-login {
+    h1.error-404 {
+        display: block;
+        width: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: $yellow;
+    }
+}
+
+#alert {
+    opacity: 0;
+    width: 90%;
+    height: 30px;
+    background-color: rgba(255, 255, 255, .2);
+    color: #F37871;
+    margin: 0 auto;
+    border: 1px solid rgba(253, 245, 162, .4);
+    text-align: center;
+    animation: flashMessage 5s linear;
+    p {
+        padding: 6px 0;
+        color: #fff;
+        @include fontMed;
+    }
+}
+
+.container {
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    padding: 0 5% 0;
+    h1.title {
         opacity: 0;
         animation: opacityAni ease-in .2s forwards;
+        font-family: 'Montserrat', sans-serif;
+        color: $white;
+        font-weight: 600;
+        margin: 10px 0 20px;
     }
-    
-    .hours-form {
-        opacity: 0;
-        animation: opacityAni ease-in .2s forwards .2s;
+    .light {
+        font-weight: 200;
     }
-    
-    .form-group {
-        margin-bottom: .3rem !important;
+    .label-light {
+        font-weight: 200;
+        font-size: .8rem;
+    }
+    h2.month-title {
+        color: $yellow;
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
+    h4 {
+        color: $yellow;
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
+    p {
+        @include fontMed;
+        color: $white;
+        font-style: italic;
+    }
+    p.edit-text {
+        @include fontLg;
+        font-style: normal;
+        padding: 10px 0;
+        color: $yellow;
+        margin: 15px auto;
+        border: 1px solid rgba(253, 245, 162, .4);
         text-align: center;
-        line-height: 1rem;
-        label {
-            @include fontMed;
-            font-weight: 400;
-            margin: 0;
-            color: white;
+    }
+    p.spacer {
+        margin-bottom: 10px;
+    }
+    a.back {
+        @include fontMed;
+        text-decoration: none;
+        font-weight: bold;
+        color: #fdf5a2;
+        margin: 13px auto;
+        display: block;
+        &:hover {
+            text-decoration: underline;
         }
-        .top-inputs {
-            @include fontMed;
-            transition: .3s ease-in;
-            background-color: transparent;
-            font-family: 'Montserrat', sans-serif;
+    }
+    a.register {
+        @include fontMed;
+        background: transparent;
+        text-decoration: none;
+        font-weight: bold;
+        color: #fdf5a2;
+        outline: none;
+        border: 1px solid #fdf5a2;
+        padding: 5px 0;
+        display: block;
+        width: 100%;
+        margin: 10px auto;
+        &:hover {
+            background-color: $yellow;
+            color: $darkSalmon;
+        }
+    }
+}
+
+.hours-form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    opacity: 0;
+    animation: opacityAni ease-in .2s forwards .2s;
+}
+
+.form-group {
+    text-align: left;
+    line-height: 1rem;
+    flex-direction: row;
+    width: 48%;
+    margin-bottom: 10px;
+    label {
+        font-size: 1rem;
+        line-height: 1.3rem;
+        width: inherit;
+        font-weight: 400;
+        margin: 0;
+        color: white;
+        position: relative;
+        a[data-tool-tip] {
             position: relative;
-            cursor: text;
-            padding: 7px 0;
-            color: $white;
-            border: none;
-            border-bottom: 1px solid rgba(255, 255, 255, .3);
-            text-align: center;
+            white-space: normal;
             width: 100%;
-            &::placeholder {
-                color: $white;
+            display: block;
+            cursor: pointer;
+            i {
+                opacity: .5;
             }
             &:hover {
-                border-bottom: 1px solid $yellow;
-            }
-            &:focus {
-                border-bottom: 1px solid $yellow;
-                color: $white;
-                &::placeholder {
-                    opacity: 0;
+                i {
+                    opacity: 1;
+                }
+                &::after {
+                    z-index: 3;
+                    opacity: 1;
                 }
             }
-        }
-        .button {
-            cursor: pointer;
-            background-color: transparent;
-            font-weight: 600;
-            border: none;
-            border-bottom: 1px solid $yellow;
-            &:hover,
-            &:focus,
-            &:active {
-                border: none;
-                border-bottom: 1px solid $yellow;
-                background-color: $yellow;
+            &::after {
+                text-align: center;
+                @include fontSm;
+                background: $yellow;
+                font-weight: bold;
+                box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.1);
+                content: attr(data-tool-tip);
+                display: block;
+                position: absolute;
+                padding: 8px 10px;
+                width: 100%;
                 color: $darkSalmon;
+                bottom: 130%;
+                opacity: 0;
+                transition: .3s linear;
             }
-        }
-        p.register {
-            margin-top: 10px;
-            font-size: .7rem;
         }
     }
-    
-    main {
-        height: 100%;
+    .top-inputs {
+        @include fontLg;
+        margin-top: 7px;
+        transition: .3s ease-in;
+        border: 1px solid rgba(255, 255, 255, .1);
+        background-color: rgba(255, 255, 255, .1);
+        font-family: 'Montserrat', sans-serif;
+        position: relative;
+        z-index: 2;
+        cursor: text;
+        padding: 7px 0;
+        color: $white;
+        text-align: center;
         width: 100%;
-        display: flex;
-        overflow-x: hidden;
-        justify-content: start;
-        opacity: 0;
-        animation: opacityAni ease-in .2s forwards .4s;
-        .shifts-header {
-            display: flex;
-            justify-content: space-between;
+        &::placeholder {
+            color: rgba(255, 255, 255, .3);
         }
-        select {
-            @include fontMed;
-            background-color: transparent;
-            -webkit-appearance: none;
-            color: $yellow;
-            font-weight: 600;
-            border: none;
-            padding: 0 6px;
-            &:focus {
-                background-color: $yellow;
-                color: $darkSalmon;
-            }
+        &:hover {
+            border: 1px solid $yellow;
         }
-        table {
-            @include fontSm;
-            background-color: rgba(255, 255, 255, .1);
-            position: relative;
-            width: 100%;
-            border-collapse: collapse;
-            tr {
-                line-height: 1rem;
-                &:nth-of-type(2n) {
-                    background-color: rgba(255, 255, 255, .2);
-                }
-            }
-            tr th,
-            td {
-                padding: 5px;
-                text-align: center;
-                color: $white;
-            }
-            td.edit,
-            td.delete {
-                position: absolute;
-                padding: 5px;
-                color: #fff;
-                width: 0;
-                display: inline-block;
-                transition: 0.2s linear;
+        &:focus {
+            border: 1px solid $yellow;
+            color: $white;
+            &::placeholder {
                 opacity: 0;
-                height: auto;
-                text-align: center;
-                button {
-                    cursor: pointer;
-                    background-color: transparent;
-                    width: 100%;
-                    outline: none;
-                    border: none;
-                    padding: 0;
-                    font-weight: bold;
-                }
             }
-            td.edit {
-                background-color: $yellow;
-                left: 0;
-                button {
-                    color: $darkSalmon;
-                    cursor: pointer;
-                }
-                i {
-                    color: $darkSalmon;
-                }
+        }
+    }
+    p.register {
+        margin-top: 10px;
+        font-size: .7rem;
+    }
+}
+
+p.disclaimer {
+    text-align: left;
+    font-weight: 200;
+}
+
+.container-login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1;
+    .form-group {
+        width: 100%;
+    }
+    opacity: 0;
+    animation: opacityAni ease-in .2s forwards;
+}
+
+.submit {
+    @include fontMed;
+    width: 100%;
+    .button,
+    .button:visited {
+        cursor: pointer;
+        background-color: transparent;
+        color: $white;
+        border: 1px solid rgba(253, 245, 162, 1);
+        font-weight: 400;
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: $yellow;
+            color: $darkSalmon;
+        }
+    }
+}
+
+main {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    opacity: 0;
+    animation: opacityAni ease-in .2s forwards .4s;
+    .shifts-header {
+        display: flex;
+        justify-content: space-between;
+    }
+    select {
+        @include fontMed;
+        background-color: transparent;
+        -webkit-appearance: none;
+        color: $yellow;
+        font-weight: 600;
+        border: none;
+        padding: 0 6px;
+        &:focus {
+            background-color: $yellow;
+            color: $darkSalmon;
+        }
+    }
+    table {
+        @include fontSm;
+        background-color: rgba(255, 255, 255, .1);
+        position: relative;
+        width: 100%;
+        border-collapse: collapse;
+        tr {
+            height: 41px;
+            &:nth-of-type(2n) {
+                background-color: rgba(255, 255, 255, .2);
             }
-            td.delete {
-                background-color: $lightSalmon;
-                right: 0;
-                form {
-                    display: inline;
-                    button {
-                        color: $yellow;
-                    }
-                    i {
-                        color: $yellow;
-                    }
-                }
+        }
+        tr th,
+        td {
+            height: 41px;
+            padding: 5px;
+            text-align: center;
+            color: $white;
+        }
+        td.edit,
+        td.delete {
+            position: absolute;
+            color: #fff;
+            width: 0;
+            display: inline-block;
+            transition: 0.2s linear;
+            opacity: 0;
+            text-align: center;
+            height: 41px;
+            padding: 14px 0;
+            button {
+                cursor: pointer;
+                background-color: transparent;
+                width: 100%;
+                outline: none;
+                border: none;
+                padding: 0;
+                font-weight: bold;
             }
-            tr.table-entries-row:active td.edit,
-            tr.table-entries-row:hover td.edit,
-            tr.table-entries-row:active td.delete,
-            tr.table-entries-row:hover td.delete {
-                transition: 0.2s linear;
-                width: 50%;
-                opacity: 1;
+        }
+        td.edit {
+            background-color: $yellow;
+            left: 0;
+            button {
+                color: $darkSalmon;
                 cursor: pointer;
             }
-            .table-header th {
-                color: $yellow;
+            i {
+                color: $darkSalmon;
             }
         }
-        p.hours-worked {
-            font-weight: 200;
-            text-align: left;
-            margin-top: 5px;
+        td.delete {
+            background-color: $lightSalmon;
+            right: 0;
+            form {
+                display: inline;
+                button {
+                    color: $yellow;
+                }
+                i {
+                    color: $yellow;
+                }
+            }
+        }
+        tr.table-entries-row:active td.edit,
+        tr.table-entries-row:hover td.edit,
+        tr.table-entries-row:active td.delete,
+        tr.table-entries-row:hover td.delete {
+            transition: 0.2s linear;
+            width: 50%;
+            opacity: 1;
+            cursor: pointer;
+        }
+        .table-header th {
+            color: $yellow;
         }
     }
+    .hours-text-container {
+        margin-top: 15px;
+        display: flex;
+        text-align: left;
+        flex-wrap: wrap;
+        p.hours-worked {
+            font-weight: 200;
+            margin-right: 5px;
+        }
+    }
+}
+
+footer {
+    width: 100%;
+    .footer-wrapper {
+        width: 90%;
+        display: flex;
+        margin: 0 auto;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+    }
+    p {
+        @include fontSm;
+        color: rgba(255, 255, 255, .3);
+    }
+    a {
+        margin-right: 5px;
+        color: rgba(255, 255, 255, .3);
+        &:hover {
+            color: rgba(255, 255, 255, 1);
+        }
+    }
+}
