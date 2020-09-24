@@ -30,6 +30,7 @@ ul {
 }
 
 input {
+  min-height: 2.5rem;
   -webkit-appearance: none;
   border-radius: 0;
 }
