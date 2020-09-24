@@ -29,6 +29,11 @@ ul {
   font-weight: normal;
 }
 
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
 input:focus,
 select:focus,
 textarea:focus,
