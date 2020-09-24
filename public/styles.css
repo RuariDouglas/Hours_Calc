@@ -246,6 +246,15 @@ body h1.error-404 {
   font-size: .9rem;
 }
 
+input[type="date"]:focus::before {
+  content: "" !important;
+}
+
+input[type="time"]::before {
+  color: #ffffff;
+  content: attr(placeholder);
+}
+
 .container {
   margin: 10px auto;
   text-align: center;

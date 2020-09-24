@@ -10,15 +10,15 @@
             </div>
             <div class="form-group">
                 <label for="start-time">Start time?</label>
-                <input class="top-inputs" min="0" max="23" type="text" id="start-time" name="startTime" onclick="(this.type='time')" onfocus="(this.type='time')" placeholder="hh:mm" required>
+                <input class="top-inputs" min="0" max="23" type="time" id="start-time" name="startTime" placeholder="hh:mm" required>
             </div>
             <div class="form-group">
                 <label for="end-time">Finish time?</label>
-                <input class="top-inputs" step="300" min="0" max="23" type="text" id="end-time" name="endTime" onfocus="(this.type='time')" placeholder="hh:mm" required>
+                <input class="top-inputs" step="300" min="0" max="23" type="time" id="end-time" name="endTime" placeholder="hh:mm" required>
             </div>
             <div class="form-group">
                 <label for="lunch-time"><a onclick="" data-tool-tip="01:45 = 1hr 45mins">Lunch time? <i class="far fa-question-circle"></i></a></label>
-                <input class="top-inputs" step="300" min="0" max="23" type="text" id="lunch-time" onfocus="(this.type='time')" placeholder="hh:mm" name="lunchTime" required>
+                <input class="top-inputs" step="300" min="0" max="23" type="time" id="lunch-time" placeholder="hh:mm" name="lunchTime" required>
             </div>
             <div class="form-group submit">
                 <input class="top-inputs button" value="Submit" type="submit">
