@@ -42,7 +42,7 @@
 
             <table>
                 <tr class="table-header">
-                    <th class="theDay">Day</th>
+                    <th class="theDay">Date</th>
                     <th>Start Time</th>
                     <th>Finish Time</th>
                     <th>Lunch Time</th>
@@ -53,7 +53,7 @@
                         <% if (shift.author.id == currentUser.id) { %>
                             <tr onclick="" class="table-entries-row">
                                 <td class="theDay">
-                                    <%= shift.date %>
+                                    <%= functions.dateFormatter(shift.date) %>
                                 </td>
                                 <td>
                                     <%= shift.startTime %>

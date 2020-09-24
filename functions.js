@@ -9,17 +9,17 @@ const timeFormatter = unformattedTime => {
         h = h.substring(1);
     }
     if (h === '0' && m === '0') return `0`;
+    else if (h === '1' && m === '' || m === '0') return `${h} hr`;
+    else if (h === '1') return `${h} hr ${m} mins`;
     else if (m === '0' || m === '') return `${h} hrs`;
     else if (h === '0' || h === '') return `${m} mins`;
-    else return `${h} hours ${m} mins`;
+    else return `${h} hrs ${m} mins`;
 }
 
 const splitAndConvert = time => {
-    // Split
     let [hh, mm] = time.split(/[.:]/);
     hh = hh || 0;
     mm = mm || 0;
-    // Convert to minutes
     return +mm + (60 * hh);
 };
 
@@ -42,7 +42,17 @@ const totalHours = (s, f, l) => {
     return totalInMinutes.toString();
 }
 
-
+const dateFormatter = date => {
+    return dates = {
+        1: '1st',
+        2: '2nd',
+        3: '3rd',
+        21: '21st',
+        22: '22nd',
+        23: '23rd',
+        31: '31st'
+    }[date] || `${date}th`;
+};
 
 
 // ----------- Middleware ------------- //
@@ -65,6 +75,7 @@ function ignoreFavicon(req, res, next) {
 
 // ----------- Export ------------- //
 module.exports = {
+    dateFormatter: dateFormatter,
     totalHours: totalHours,
     splitAndConvert: splitAndConvert,
     pad: pad,

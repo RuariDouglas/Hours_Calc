@@ -83,5 +83,5 @@ app.use(function(req, res, next) {
         default: function() {
             res.type('txt').send('Not found')
         }
-    })
+    });
 });
