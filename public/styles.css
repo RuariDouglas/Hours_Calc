@@ -378,6 +378,8 @@ body h1.error-404 {
   width: 100%;
   display: block;
   cursor: pointer;
+  -webkit-transition: .3s linear;
+  transition: .3s linear;
 }
 
 .form-group label a[data-tool-tip] i {
@@ -388,12 +390,36 @@ body h1.error-404 {
   opacity: 1;
 }
 
+.form-group label a[data-tool-tip]:hover::before {
+  z-index: 4;
+  opacity: 1;
+}
+
 .form-group label a[data-tool-tip]:hover::after {
   z-index: 3;
   opacity: 1;
 }
 
+.form-group label a[data-tool-tip]::before {
+  content: '';
+  opacity: 0;
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 9px solid #fdf5a2;
+  position: absolute;
+  display: block;
+  top: -32%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-transition: .1s linear;
+  transition: .1s linear;
+}
+
 .form-group label a[data-tool-tip]::after {
+  cursor: default;
   text-align: center;
   font-size: .8rem;
   background: #fdf5a2;
@@ -408,8 +434,8 @@ body h1.error-404 {
   color: #F37871;
   bottom: 130%;
   opacity: 0;
-  -webkit-transition: .3s linear;
-  transition: .3s linear;
+  -webkit-transition: .1s linear;
+  transition: .1s linear;
 }
 
 .form-group .top-inputs {

@@ -23,6 +23,14 @@ const monthData = [{
         shifts: []
     },
     {
+        month: 'June',
+        shifts: []
+    },
+    {
+        month: 'July',
+        shifts: []
+    },
+    {
         month: 'August',
         shifts: []
     },
@@ -44,9 +52,9 @@ const monthData = [{
     }
 ];
 
-function seedDB() {
+async function seedDB() {
     for (entry of monthData) {
-        Month.create(entry, (err, created) => {
+        await Month.create(entry, (err, created) => {
             if (err) console.log(err);
             else console.log(created);
         })

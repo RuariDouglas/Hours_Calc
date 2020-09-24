@@ -324,6 +324,7 @@ body {
             width: 100%;
             display: block;
             cursor: pointer;
+            transition: .3s linear;
             i {
                 opacity: .5;
             }
@@ -331,12 +332,32 @@ body {
                 i {
                     opacity: 1;
                 }
+                &::before {
+                    z-index: 4;
+                    opacity: 1;
+                }
                 &::after {
                     z-index: 3;
                     opacity: 1;
                 }
             }
+            &::before {
+                content: '';
+                opacity: 0;
+                width: 0;
+                height: 0;
+                border-left: 9px solid transparent;
+                border-right: 9px solid transparent;
+                border-top: 9px solid #fdf5a2;
+                position: absolute;
+                display: block;
+                top: -32%;
+                left: 50%;
+                transform: translateX(-50%);
+                transition: .1s linear;
+            }
             &::after {
+                cursor: default;
                 text-align: center;
                 @include fontSm;
                 background: $yellow;
@@ -350,7 +371,7 @@ body {
                 color: $darkSalmon;
                 bottom: 130%;
                 opacity: 0;
-                transition: .3s linear;
+                transition: .1s linear;
             }
         }
     }

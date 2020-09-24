@@ -1,29 +1,3 @@
-const totalHours = (start, finish, lunch) => {
-    const startTime = convertToDecimal(start);
-    const finishTime = convertToDecimal(finish);
-    const lunchTime = convertToDecimal(lunch);
-    const total = finishTime - startTime - lunchTime;
-    return total.toString();
-}
-const convertToTime = time => {
-    let [h, m] = time.split(/[.:]/);
-    h = h || 0;
-    m = m || 0;
-    if (m.length > 2) {
-        m = m.slice(0, 2);
-    }
-    m = `.${m}`;
-    m = Math.round(+m * 60).toString();
-    return m.length === 1 ? `${h}.0${m}` : `${h}.${m}`
-};
-
-const convertToDecimal = time => {
-    let [h, m] = time.split(/[.:]/);
-    h = h || 0;
-    m = m || 0;
-    return (+h + +m / 60);
-}
-
 const timeFormatter = unformattedTime => {
     let [h, m] = unformattedTime.split(/[.:]/);
     h = h || 0;
@@ -38,6 +12,34 @@ const timeFormatter = unformattedTime => {
     else if (m === '0' || m === '') return `${h} hrs`;
     else if (h === '0' || h === '') return `${m} mins`;
     else return `${h} hours ${m} mins`;
+}
+
+const splitAndConvert = time => {
+    // Split
+    let [hh, mm] = time.split(/[.:]/);
+    hh = hh || 0;
+    mm = mm || 0;
+    // Convert to minutes
+    return +mm + (60 * hh);
+};
+
+const pad = num => {
+    return ("0" + num).slice(-2)
+};
+
+const convertToTime = (timeInMins) => {
+    let hours = Math.floor(timeInMins / 60);
+    let minutes = timeInMins % 60;
+    // To get time, return here
+    return pad(hours) + ":" + pad(minutes);
+}
+
+const totalHours = (s, f, l) => {
+    const smin = splitAndConvert(s);
+    const fmin = splitAndConvert(f);
+    const lmin = splitAndConvert(l);
+    let totalInMinutes = s > f ? Math.abs(smin - (24 * 60) - fmin) - lmin : fmin - smin - lmin;
+    return totalInMinutes.toString();
 }
 
 
@@ -64,7 +66,8 @@ function ignoreFavicon(req, res, next) {
 // ----------- Export ------------- //
 module.exports = {
     totalHours: totalHours,
-    convertToDecimal: convertToDecimal,
+    splitAndConvert: splitAndConvert,
+    pad: pad,
     convertToTime: convertToTime,
     timeFormatter: timeFormatter,
     ignoreFavicon: ignoreFavicon,
