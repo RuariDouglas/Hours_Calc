@@ -31,9 +31,9 @@ router.get('/:id', functions.isLoggedIn, (req, res) => {
 // CREATE (NEW SHIFT IN MONTH)
 router.post('/:id', functions.isLoggedIn, (req, res) => {
     const userDay = req.body.date;
-    const startTime = req.body.startTime;
-    const finishTime = req.body.endTime;
-    const lunchTime = req.body.lunchTime;
+    const startTime = functions.slicer(req.body.startTime);
+    const finishTime = functions.slicer(req.body.endTime);
+    const lunchTime = functions.slicer(req.body.lunchTime);
     const totalShiftHours = functions.totalHours(startTime, finishTime, lunchTime);
     const newShift = {
         date: userDay || day,

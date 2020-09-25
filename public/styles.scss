@@ -158,6 +158,7 @@ body {
     background-attachment: fixed;
     font-family: 'Montserrat', sans-serif;
     overflow-x: hidden;
+    /* this is important for the trick to work */
     h1 {
         font-size: 2.8rem;
     }
@@ -206,6 +207,64 @@ body {
     }
 }
 
+// TIME PICKER CSS
+.form-group {
+    font-family: 'Montserrat', sans-serif;
+    .wheel-picker {
+        color: $white !important;
+        border: none !important;
+        outline: none !important;
+        min-width: 100px !important;
+        background-color: rgba(255, 255, 255, .1);
+        .time-wrapper {
+            outline: none !important;
+            background-color: inherit !important;
+            border: none !important;
+            .hours,
+            .minutes,
+            .seconds {
+                outline: none !important;
+                border: 1px solid rgba(255, 255, 255, .1);
+            }
+        }
+        .select-block {
+            background-color: $white;
+            color: #3e3e3e;
+            &::before {
+                background: $yellow;
+                color: $white !important;
+            }
+            ul {
+                border: none;
+                z-index: 100 !important;
+            }
+        }
+        .select-wrapper {
+            box-shadow: 0 3px 3px 0px rgba(0, 0, 0, .1) !important;
+            .default-icon-cross {
+                width: 12px;
+                height: 12px;
+            }
+        }
+        .action-block>:not(:last-child) {
+            background-color: $yellow;
+            border-right: none !important;
+        }
+    }
+    .time-picker {
+        input:focus~.time-wrapper {
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+        }
+    }
+}
+
+input,
+input:focus {
+    box-shadow: none !important;
+}
+
+// ==============================
 #alert {
     opacity: 0;
     width: 90%;
@@ -221,15 +280,6 @@ body {
         color: #fff;
         @include fontMed;
     }
-}
-
-input[type="date"]:focus::before {
-    content: "" !important;
-}
-
-input[type="time"]::before {
-    color: #ffffff;
-    content: attr(placeholder);
 }
 
 .container {
@@ -400,7 +450,6 @@ input[type="time"]::before {
         position: relative;
         z-index: 2;
         cursor: text;
-        padding: 7px 0;
         color: $white;
         text-align: center;
         width: 100%;
@@ -469,11 +518,22 @@ main {
     overflow-x: hidden;
     opacity: 0;
     animation: opacityAni ease-in .2s forwards .4s;
+    .top {
+        position: relative;
+        z-index: 5;
+    }
+    .middle {
+        position: relative;
+        z-index: 0;
+    }
     .shifts-header {
         display: flex;
         justify-content: space-between;
     }
-    select {
+    select.month-list {
+        width: auto;
+        height: auto;
+        line-height: inherit;
         @include fontMed;
         background-color: transparent;
         -webkit-appearance: none;
@@ -486,7 +546,7 @@ main {
             color: $darkSalmon;
         }
     }
-    table {
+    table.shift-table {
         @include fontSm;
         background-color: rgba(255, 255, 255, .1);
         position: relative;
@@ -504,9 +564,11 @@ main {
             padding: 5px;
             text-align: center;
             color: $white;
+            vertical-align: center !important;
         }
         td.edit,
         td.delete {
+            vertical-align: middle;
             position: absolute;
             color: #fff;
             width: 0;
@@ -527,6 +589,7 @@ main {
             }
         }
         td.edit {
+            vertical-align: middle;
             background-color: $yellow;
             left: 0;
             button {
@@ -539,9 +602,9 @@ main {
         }
         td.delete {
             background-color: $lightSalmon;
-            right: 0;
+            right: 0 !important;
             form {
-                display: inline;
+                display: inline !important;
                 button {
                     color: $yellow;
                 }
@@ -550,14 +613,17 @@ main {
                 }
             }
         }
-        tr.table-entries-row:active td.edit,
-        tr.table-entries-row:hover td.edit,
-        tr.table-entries-row:active td.delete,
-        tr.table-entries-row:hover td.delete {
-            transition: 0.2s linear;
-            width: 50%;
-            opacity: 1;
-            cursor: pointer;
+        td.td {
+            vertical-align: middle;
+        }
+        tr#table-entries-row:active td.edit,
+        tr#table-entries-row:hover td.edit,
+        tr#table-entries-row:active td.delete,
+        tr#table-entries-row:hover td.delete {
+            transition: 0.2s linear !important;
+            width: 50% !important;
+            opacity: 1 !important;
+            cursor: pointer !important;
         }
         .table-header th {
             color: $yellow;
@@ -569,6 +635,7 @@ main {
         text-align: left;
         flex-wrap: wrap;
         p.hours-worked {
+            margin-top: 0;
             font-weight: 200;
             margin-right: 5px;
         }
@@ -585,11 +652,12 @@ footer {
         align-items: center;
         justify-content: center;
     }
-    p {
+    p.copyright {
         @include fontSm;
         color: rgba(255, 255, 255, .3);
+        margin-top: 0;
     }
-    a {
+    a.github {
         margin-right: 5px;
         color: rgba(255, 255, 255, .3);
         &:hover {

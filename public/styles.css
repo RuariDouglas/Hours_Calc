@@ -160,6 +160,7 @@ body {
   background-attachment: fixed;
   font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
+  /* this is important for the trick to work */
 }
 
 body h1 {
@@ -227,6 +228,72 @@ body h1.error-404 {
   color: #fdf5a2;
 }
 
+.form-group {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.form-group .wheel-picker {
+  color: #fff !important;
+  border: none !important;
+  outline: none !important;
+  min-width: 100px !important;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.form-group .wheel-picker .time-wrapper {
+  outline: none !important;
+  background-color: inherit !important;
+  border: none !important;
+}
+
+.form-group .wheel-picker .time-wrapper .hours,
+.form-group .wheel-picker .time-wrapper .minutes,
+.form-group .wheel-picker .time-wrapper .seconds {
+  outline: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-group .wheel-picker .select-block {
+  background-color: #fff;
+  color: #3e3e3e;
+}
+
+.form-group .wheel-picker .select-block::before {
+  background: #fdf5a2;
+  color: #fff !important;
+}
+
+.form-group .wheel-picker .select-block ul {
+  border: none;
+  z-index: 100 !important;
+}
+
+.form-group .wheel-picker .select-wrapper {
+  -webkit-box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.1) !important;
+          box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.1) !important;
+}
+
+.form-group .wheel-picker .select-wrapper .default-icon-cross {
+  width: 12px;
+  height: 12px;
+}
+
+.form-group .wheel-picker .action-block > :not(:last-child) {
+  background-color: #fdf5a2;
+  border-right: none !important;
+}
+
+.form-group .time-picker input:focus ~ .time-wrapper {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+input,
+input:focus {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
 #alert {
   opacity: 0;
   width: 90%;
@@ -244,15 +311,6 @@ body h1.error-404 {
   padding: 6px 0;
   color: #fff;
   font-size: .9rem;
-}
-
-input[type="date"]:focus::before {
-  content: "" !important;
-}
-
-input[type="time"]::before {
-  color: #ffffff;
-  content: attr(placeholder);
 }
 
 .container {
@@ -464,7 +522,6 @@ input[type="time"]::before {
   position: relative;
   z-index: 2;
   cursor: text;
-  padding: 7px 0;
   color: #fff;
   text-align: center;
   width: 100%;
@@ -570,6 +627,16 @@ main {
           animation: opacityAni ease-in .2s forwards .4s;
 }
 
+main .top {
+  position: relative;
+  z-index: 5;
+}
+
+main .middle {
+  position: relative;
+  z-index: 0;
+}
+
 main .shifts-header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -579,7 +646,10 @@ main .shifts-header {
           justify-content: space-between;
 }
 
-main select {
+main select.month-list {
+  width: auto;
+  height: auto;
+  line-height: inherit;
   font-size: .9rem;
   background-color: transparent;
   -webkit-appearance: none;
@@ -589,12 +659,12 @@ main select {
   padding: 0 6px;
 }
 
-main select:focus {
+main select.month-list:focus {
   background-color: #fdf5a2;
   color: #F37871;
 }
 
-main table {
+main table.shift-table {
   font-size: .8rem;
   background-color: rgba(255, 255, 255, 0.1);
   position: relative;
@@ -602,24 +672,26 @@ main table {
   border-collapse: collapse;
 }
 
-main table tr {
+main table.shift-table tr {
   height: 41px;
 }
 
-main table tr:nth-of-type(2n) {
+main table.shift-table tr:nth-of-type(2n) {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-main table tr th,
-main table td {
+main table.shift-table tr th,
+main table.shift-table td {
   height: 41px;
   padding: 5px;
   text-align: center;
   color: #fff;
+  vertical-align: center !important;
 }
 
-main table td.edit,
-main table td.delete {
+main table.shift-table td.edit,
+main table.shift-table td.delete {
+  vertical-align: middle;
   position: absolute;
   color: #fff;
   width: 0;
@@ -632,8 +704,8 @@ main table td.delete {
   padding: 14px 0;
 }
 
-main table td.edit button,
-main table td.delete button {
+main table.shift-table td.edit button,
+main table.shift-table td.delete button {
   cursor: pointer;
   background-color: transparent;
   width: 100%;
@@ -643,49 +715,54 @@ main table td.delete button {
   font-weight: bold;
 }
 
-main table td.edit {
+main table.shift-table td.edit {
+  vertical-align: middle;
   background-color: #fdf5a2;
   left: 0;
 }
 
-main table td.edit button {
+main table.shift-table td.edit button {
   color: #F37871;
   cursor: pointer;
 }
 
-main table td.edit i {
+main table.shift-table td.edit i {
   color: #F37871;
 }
 
-main table td.delete {
+main table.shift-table td.delete {
   background-color: #F7AB99;
-  right: 0;
+  right: 0 !important;
 }
 
-main table td.delete form {
-  display: inline;
+main table.shift-table td.delete form {
+  display: inline !important;
 }
 
-main table td.delete form button {
+main table.shift-table td.delete form button {
   color: #fdf5a2;
 }
 
-main table td.delete form i {
+main table.shift-table td.delete form i {
   color: #fdf5a2;
 }
 
-main table tr.table-entries-row:active td.edit,
-main table tr.table-entries-row:hover td.edit,
-main table tr.table-entries-row:active td.delete,
-main table tr.table-entries-row:hover td.delete {
-  -webkit-transition: 0.2s linear;
-  transition: 0.2s linear;
-  width: 50%;
-  opacity: 1;
-  cursor: pointer;
+main table.shift-table td.td {
+  vertical-align: middle;
 }
 
-main table .table-header th {
+main table.shift-table tr#table-entries-row:active td.edit,
+main table.shift-table tr#table-entries-row:hover td.edit,
+main table.shift-table tr#table-entries-row:active td.delete,
+main table.shift-table tr#table-entries-row:hover td.delete {
+  -webkit-transition: 0.2s linear !important;
+  transition: 0.2s linear !important;
+  width: 50% !important;
+  opacity: 1 !important;
+  cursor: pointer !important;
+}
+
+main table.shift-table .table-header th {
   color: #fdf5a2;
 }
 
@@ -700,6 +777,7 @@ main .hours-text-container {
 }
 
 main .hours-text-container p.hours-worked {
+  margin-top: 0;
   font-weight: 200;
   margin-right: 5px;
 }
@@ -723,17 +801,18 @@ footer .footer-wrapper {
           justify-content: center;
 }
 
-footer p {
+footer p.copyright {
   font-size: .8rem;
   color: rgba(255, 255, 255, 0.3);
+  margin-top: 0;
 }
 
-footer a {
+footer a.github {
   margin-right: 5px;
   color: rgba(255, 255, 255, 0.3);
 }
 
-footer a:hover {
+footer a.github:hover {
   color: white;
 }
 /*# sourceMappingURL=styles.css.map */
