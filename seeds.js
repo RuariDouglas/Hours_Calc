@@ -54,10 +54,17 @@ const monthData = [{
 
 async function seedDB() {
     for (entry of monthData) {
-        await Month.create(entry, (err, created) => {
-            if (err) console.log(err);
-            else console.log(created);
-        })
+        await new Promise((resolvePromise, rejectPromise) => {
+            Month.create(entry, (err, created) => {
+                if (err) {
+                    rejectPromise();
+                    console.log(err);
+                } else {
+                    resolvePromise();
+                    console.log(created);
+                }
+            })
+        });
     }
 }
 
