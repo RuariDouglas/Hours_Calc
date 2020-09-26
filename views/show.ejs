@@ -4,22 +4,22 @@
             <h1 class="title">
                 <span class="light">Hours</span> Calculator
             </h1>
-            <form class="hours-form" action="/<%= month._id %>" method="POST" autocomplete="off">
+            <form id="form" class="hours-form" action="/<%= month._id %>" method="POST" autocomplete="off">
                 <div class="form-group">
                     <label for="date"><a onclick="" data-tool-tip="E.g. The 21st = 21">Date? <i class="far fa-question-circle"></i></a></label>
-                    <input class="top-inputs" min="0" max="31" type="number" id="date" name="date" placeholder="...">
+                    <input class="top-inputs" min="0" max="31" name="date" placeholder="...">
                 </div>
                 <div class="form-group">
                     <label for="start-time">Start time?</label>
-                    <input name="startTime" data-role="timepicker" data-show-labels="false" data-seconds="false" required>
+                    <input class="top-inputs time" name="startTime" type="text" placeholder="hh : mm" required>
                 </div>
                 <div class="form-group">
                     <label for="end-time">Finish time?</label>
-                    <input name="endTime" data-role="timepicker" data-show-labels="false" data-seconds="false" required>
+                    <input class="top-inputs time" name="endTime" type="text" placeholder="hh : mm" required>
                 </div>
                 <div class="form-group">
                     <label for="lunch-time"><a onclick="" data-tool-tip="01:45 = 1hr 45mins">Lunch time? <i class="far fa-question-circle"></i></a></label>
-                    <input name="lunchTime" data-role="timepicker" data-show-labels="false" data-seconds="false" required>
+                    <input class="top-inputs time" name="lunchTime" type="text" placeholder="hh : mm" required>
                 </div>
                 <div class="form-group submit">
                     <input class="top-inputs button" value="Submit" type="submit">

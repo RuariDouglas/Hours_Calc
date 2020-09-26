@@ -1,5 +1,5 @@
 const slicer = time => {
-    return time.slice(0, 5);
+    return time.split(' ').join('');
 }
 
 const timeFormatter = unformattedTime => {
@@ -57,7 +57,7 @@ const dateFormatter = date => {
         31: '31st'
     }[date] || `${date}th`;
 };
-
+console.log(slicer('10 : 30'))
 
 // ----------- Middleware ------------- //
 // Logged in?
