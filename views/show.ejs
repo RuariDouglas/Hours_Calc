@@ -52,16 +52,16 @@
                 <% let total = 0 %>
                     <% for(let shift of month.shifts){ %>
                         <% if (shift.author.id == currentUser.id) { %>
-                            <tr onclick="" id="table-entries-row">
+                            <tr id="table-entries-row">
                                 <td class="td">
                                     <%= functions.dateFormatter(shift.date) %>
                                 </td>
                                 <td class="td">
-                                    <%= functions.spacer(shift.startTime) %>
+                                    <%= functions.slicer(shift.startTime) %>
                                 </td>
                                 </td>
                                 <td class="td">
-                                    <%= functions.spacer(shift.finishTime) %>
+                                    <%= functions.slicer(shift.finishTime) %>
                                 </td>
                                 <td class="td">
                                     <%= functions.timeFormatter(shift.lunchTime) %>
