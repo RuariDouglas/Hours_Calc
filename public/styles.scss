@@ -51,6 +51,12 @@ $orange: #f39971;
 $yellow: #fdf5a2;
 $lightSalmon: #F7AB99;
 $darkSalmon: #F37871;
+// ------------------ VARIABLES -------------------- //
+$white: #fff;
+$lightGreen: #C8F5C7;
+$turq: #91E3CE;
+$blue: #071827;
+$peaYellow: #F0FB96;
 // ------------------ @MIXINS --------------------- //
 @mixin fontLg {
     font-size: 1.2rem;
@@ -92,57 +98,27 @@ $darkSalmon: #F37871;
 // ------------------ @media queries --------------------- //
 @media (min-width: 768px) {
     body {
-        .container-login {
-            max-width: 768px;
-            padding: 0 5%;
-        }
         .container {
-            h1.title {
-                margin: 10px 0 20px;
-            }
-            .hours-form,
-            .edit-form {
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-end;
-                width: 100%;
-                .form-group {
-                    width: 19%;
-                }
-            }
-            .edit-form {
-                .form-group {
-                    width: 24%;
-                }
-            }
-            #alert {
-                max-width: 768px;
+            .form-group {
+                width: 19%;
             }
         }
-        main table .table-header th {
-            @include fontMed;
-            line-height: 2rem;
+        .container-login {
+            .form-group {
+                width: 33%;
+            }
+            .submit {
+                width: 33%;
+                margin: 0 auto;
+            }
         }
     }
 }
 
 @media (min-width: 1024px) {
     body {
-        .container {
-            max-width: 1024px;
-            padding: 0 5%;
-        }
-        .bar .bar-wrapper {
-            max-width: 1024px;
-            padding: 0;
-            p {
-                padding: 7px 0;
-            }
-        }
-        #alert {
-            max-width: 1024px;
-        }
-        footer .footer-wrapper {
+        .container,
+        .container-login {
             max-width: 1024px;
             padding: 0 5%;
         }
@@ -151,8 +127,8 @@ $darkSalmon: #F37871;
 
 // ------------------ & NOW THE CODE --------------------- //
 body {
-    background: #f39971;
-    background: linear-gradient(332deg, $darkSalmon 0%, $orange 100%);
+    background: rgb(19, 65, 106);
+    background: linear-gradient(315deg, rgba(19, 65, 106, 1) 0%, rgba(7, 24, 39, 1) 100%);
     margin: 0;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -188,7 +164,7 @@ body {
                 a {
                     font-weight: bold;
                     text-decoration: none;
-                    color: $yellow;
+                    color: $turq;
                     &:hover {
                         text-decoration: underline;
                     }
@@ -203,65 +179,8 @@ body {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        color: $yellow;
+        color: $turq;
     }
-}
-
-// TIME PICKER CSS
-.form-group {
-    font-family: 'Montserrat', sans-serif;
-    .wheel-picker {
-        color: $white !important;
-        border: none !important;
-        outline: none !important;
-        min-width: 100px !important;
-        background-color: rgba(255, 255, 255, .1);
-        .time-wrapper {
-            outline: none !important;
-            background-color: inherit !important;
-            border: none !important;
-            .hours,
-            .minutes,
-            .seconds {
-                outline: none !important;
-                border: 1px solid rgba(255, 255, 255, .1);
-            }
-        }
-        .select-block {
-            background-color: $white;
-            color: #3e3e3e;
-            &::before {
-                background: $yellow;
-                color: $white !important;
-            }
-            ul {
-                border: none;
-                z-index: 100 !important;
-            }
-        }
-        .select-wrapper {
-            box-shadow: 0 3px 3px 0px rgba(0, 0, 0, .1) !important;
-            .default-icon-cross {
-                width: 12px;
-                height: 12px;
-            }
-        }
-        .action-block>:not(:last-child) {
-            background-color: $yellow;
-            border-right: none !important;
-        }
-    }
-    .time-picker {
-        input:focus~.time-wrapper {
-            -webkit-box-shadow: none !important;
-            box-shadow: none !important;
-        }
-    }
-}
-
-input,
-input:focus {
-    box-shadow: none !important;
 }
 
 // ==============================
@@ -269,10 +188,10 @@ input:focus {
     opacity: 0;
     width: 90%;
     height: 30px;
-    background-color: rgba(255, 255, 255, .2);
-    color: #F37871;
+    background-color: $blue;
+    color: $white;
     margin: 0 auto;
-    border: 1px solid rgba(253, 245, 162, .4);
+    border: 1px solid $turq;
     text-align: center;
     animation: flashMessage 5s linear;
     p {
@@ -303,12 +222,12 @@ input:focus {
         font-size: .8rem;
     }
     h2.month-title {
-        color: $yellow;
+        color: $turq;
         font-size: 1.6rem;
-        margin-bottom: 10px;
+        margin-bottom: 5px
     }
     h4 {
-        color: $yellow;
+        color: $turq;
         font-size: 1.6rem;
         margin-bottom: 10px;
     }
@@ -321,9 +240,9 @@ input:focus {
         @include fontLg;
         font-style: normal;
         padding: 10px 0;
-        color: $yellow;
+        color: $turq;
         margin: 15px auto;
-        border: 1px solid rgba(253, 245, 162, .4);
+        border: 1px solid $turq;
         text-align: center;
     }
     p.spacer {
@@ -333,7 +252,7 @@ input:focus {
         @include fontMed;
         text-decoration: none;
         font-weight: bold;
-        color: #fdf5a2;
+        color: $turq;
         margin: 13px auto;
         display: block;
         &:hover {
@@ -345,21 +264,22 @@ input:focus {
         background: transparent;
         text-decoration: none;
         font-weight: bold;
-        color: #fdf5a2;
+        color: $turq;
         outline: none;
-        border: 1px solid #fdf5a2;
+        border: 1px solid $turq;
         padding: 5px 0;
         display: block;
         width: 100%;
         margin: 10px auto;
         &:hover {
-            background-color: $yellow;
-            color: $darkSalmon;
+            background-color: $turq;
+            color: $blue;
         }
     }
 }
 
-.hours-form {
+.hours-form,
+.edit-form {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -413,7 +333,7 @@ input:focus {
                 height: 0;
                 border-left: 9px solid transparent;
                 border-right: 9px solid transparent;
-                border-top: 9px solid #fdf5a2;
+                border-top: 9px solid $turq;
                 position: absolute;
                 display: block;
                 top: -32%;
@@ -425,15 +345,15 @@ input:focus {
                 cursor: default;
                 text-align: center;
                 @include fontSm;
-                background: $yellow;
+                background: $turq;
                 font-weight: bold;
-                box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.7);
                 content: attr(data-tool-tip);
                 display: block;
                 position: absolute;
                 padding: 8px 10px;
                 width: 100%;
-                color: $darkSalmon;
+                color: $blue;
                 bottom: 130%;
                 opacity: 0;
                 transition: .1s linear;
@@ -457,10 +377,10 @@ input:focus {
             color: rgba(255, 255, 255, .3);
         }
         &:hover {
-            border: 1px solid $yellow;
+            border: 1px solid $turq;
         }
         &:focus {
-            border: 1px solid $yellow;
+            border: 1px solid $turq;
             color: $white;
             &::placeholder {
                 opacity: 0;
@@ -473,9 +393,15 @@ input:focus {
     }
 }
 
-p.disclaimer {
+p.disclaimer,
+p.row-info {
+    opacity: .6;
     text-align: left;
     font-weight: 200;
+}
+
+p.row-info {
+    margin-top: 10px;
 }
 
 .container-login {
@@ -501,13 +427,13 @@ p.disclaimer {
         cursor: pointer;
         background-color: transparent;
         color: $white;
-        border: 1px solid rgba(253, 245, 162, 1);
+        border: 1px solid $turq;
         font-weight: 400;
         &:hover,
         &:focus,
         &:active {
-            background-color: $yellow;
-            color: $darkSalmon;
+            background-color: $turq;
+            color: $blue;
         }
     }
 }
@@ -523,6 +449,7 @@ main {
         z-index: 5;
     }
     .middle {
+        margin-top: 50px;
         position: relative;
         z-index: 0;
     }
@@ -537,13 +464,13 @@ main {
         @include fontMed;
         background-color: transparent;
         -webkit-appearance: none;
-        color: $yellow;
+        color: $turq;
         font-weight: 600;
         border: none;
         padding: 0 6px;
         &:focus {
-            background-color: $yellow;
-            color: $darkSalmon;
+            background-color: $turq;
+            color: $blue;
         }
     }
     table.shift-table {
@@ -564,7 +491,6 @@ main {
             padding: 5px;
             text-align: center;
             color: $white;
-            vertical-align: center !important;
         }
         td.edit,
         td.delete {
@@ -590,26 +516,26 @@ main {
         }
         td.edit {
             vertical-align: middle;
-            background-color: $yellow;
+            background-color: $turq;
             left: 0;
             button {
-                color: $darkSalmon;
+                color: $blue;
                 cursor: pointer;
             }
             i {
-                color: $darkSalmon;
+                color: $blue;
             }
         }
         td.delete {
-            background-color: $lightSalmon;
-            right: 0 !important;
+            background-color: $blue;
+            right: 0;
             form {
-                display: inline !important;
+                display: inline;
                 button {
-                    color: $yellow;
+                    color: $turq;
                 }
                 i {
-                    color: $yellow;
+                    color: $turq;
                 }
             }
         }
@@ -620,13 +546,13 @@ main {
         tr#table-entries-row:hover td.edit,
         tr#table-entries-row:active td.delete,
         tr#table-entries-row:hover td.delete {
-            transition: 0.2s linear !important;
-            width: 50% !important;
-            opacity: 1 !important;
-            cursor: pointer !important;
+            transition: 0.2s linear;
+            width: 50%;
+            opacity: 1;
+            cursor: pointer;
         }
         .table-header th {
-            color: $yellow;
+            color: $turq;
         }
     }
     .hours-text-container {

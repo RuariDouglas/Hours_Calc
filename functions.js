@@ -2,6 +2,11 @@ const slicer = time => {
     return time.split(' ').join('');
 }
 
+const spacer = time => {
+    let [hh, mm] = time.split(':');
+    return `${hh} : ${mm}`;
+}
+
 const timeFormatter = unformattedTime => {
     let [h, m] = unformattedTime.split(/[.:]/);
     h = h || 0;
@@ -79,6 +84,7 @@ function ignoreFavicon(req, res, next) {
 
 // ----------- Export ------------- //
 module.exports = {
+    spacer: spacer,
     slicer: slicer,
     dateFormatter: dateFormatter,
     totalHours: totalHours,
