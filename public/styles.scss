@@ -98,27 +98,60 @@ $peaYellow: #F0FB96;
 // ------------------ @media queries --------------------- //
 @media (min-width: 768px) {
     body {
+        .container-login {
+            max-width: 768px;
+            padding: 0 5%;
+        }
         .container {
-            .form-group {
-                width: 19%;
+            h1.title {
+                margin: 10px 0 20px;
+            }
+            .hours-form,
+            .edit-form {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                width: 100%;
+                .form-group {
+                    width: 19%;
+                }
+            }
+            .edit-form {
+                .form-group {
+                    width: 24%;
+                }
+            }
+            #alert {
+                max-width: 768px;
             }
         }
-        .container-login {
-            .form-group {
-                width: 33%;
-            }
-            .submit {
-                width: 33%;
-                margin: 0 auto;
-            }
+        main table .table-header th {
+            @include fontMed;
+            line-height: 2rem;
+        }
+        .top-spacer {
+            top: 50%;
         }
     }
 }
 
 @media (min-width: 1024px) {
     body {
-        .container,
-        .container-login {
+        .container {
+            max-width: 1024px;
+            padding: 0 5%;
+        }
+        .bar .bar-wrapper {
+            max-width: 1024px;
+            padding: 0;
+            p {
+                padding: 7px 0;
+            }
+        }
+        #alert {
+            max-width: 1024px;
+        }
+        footer .footer-wrapper {
             max-width: 1024px;
             padding: 0 5%;
         }
@@ -152,8 +185,6 @@ body {
             height: 100%;
             p {
                 @include fontSm;
-                opacity: 0;
-                animation: opacityAni ease-in .3s forwards;
                 text-decoration: none;
                 text-align: center;
                 color: rgba(255, 255, 255, .5);
@@ -224,9 +255,11 @@ body {
     h2.month-title {
         color: $turq;
         font-size: 1.6rem;
-        margin-bottom: 5px
+        margin-bottom: 10px
     }
     h4 {
+        opacity: 0;
+        animation: opacityAni ease-in .2s forwards .2s;
         color: $turq;
         font-size: 1.6rem;
         margin-bottom: 10px;
@@ -234,10 +267,11 @@ body {
     p {
         @include fontMed;
         color: $white;
-        font-style: italic;
     }
     p.edit-text {
         @include fontLg;
+        opacity: 0;
+        animation: opacityAni ease-in .2s forwards .1s;
         font-style: normal;
         padding: 10px 0;
         color: $turq;
@@ -250,6 +284,8 @@ body {
     }
     a.back {
         @include fontMed;
+        opacity: 0;
+        animation: opacityAni ease-in .2s forwards .6s;
         text-decoration: none;
         font-weight: bold;
         color: $turq;
@@ -280,13 +316,28 @@ body {
 
 .hours-form,
 .edit-form {
+    opacity: 0;
+    animation: opacityAni ease-in .2s forwards .2s;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-end;
-    opacity: 0;
-    animation: opacityAni ease-in .2s forwards .2s;
+}
+
+.login-form {
+    .form-group:nth-child(1) {
+        opacity: 0;
+        animation: opacityAni ease-in .2s forwards .3s;
+    }
+    .form-group:nth-child(2) {
+        opacity: 0;
+        animation: opacityAni ease-in .2s forwards .4s;
+    }
+    .form-group:nth-child(3) {
+        opacity: 0;
+        animation: opacityAni ease-in .2s forwards .5s;
+    }
 }
 
 .form-group {
@@ -387,10 +438,13 @@ body {
             }
         }
     }
-    p.register {
-        margin-top: 10px;
-        font-size: .7rem;
-    }
+}
+
+p.register {
+    opacity: 0;
+    animation: opacityAni ease-in .2s forwards .6s;
+    margin-top: 10px;
+    font-size: .7rem;
 }
 
 p.disclaimer,
@@ -398,9 +452,18 @@ p.row-info {
     opacity: .6;
     text-align: left;
     font-weight: 200;
+    color: $turq;
+    font-style: italic;
+}
+
+p.disclaimer {
+    opacity: 0;
+    animation: opacityAni ease-in .2s forwards .3s;
 }
 
 p.row-info {
+    opacity: 0;
+    animation: opacityAni ease-in .2s forwards .5s;
     margin-top: 10px;
 }
 
@@ -415,8 +478,10 @@ p.row-info {
     .form-group {
         width: 100%;
     }
-    opacity: 0;
-    animation: opacityAni ease-in .2s forwards;
+}
+
+.top-spacer {
+    top: 54%;
 }
 
 .submit {
@@ -442,8 +507,7 @@ main {
     height: 100%;
     width: 100%;
     overflow-x: hidden;
-    opacity: 0;
-    animation: opacityAni ease-in .2s forwards .4s;
+    opacity: 1;
     .top {
         position: relative;
         z-index: 5;
@@ -456,6 +520,8 @@ main {
     .shifts-header {
         display: flex;
         justify-content: space-between;
+        opacity: 0;
+        animation: opacityAni ease-in .2s forwards .3s;
     }
     select.month-list {
         width: auto;
@@ -474,6 +540,8 @@ main {
         }
     }
     table.shift-table {
+        opacity: 0;
+        animation: opacityAni ease-in .2s forwards .4s;
         @include fontSm;
         background-color: rgba(255, 255, 255, .1);
         position: relative;
@@ -487,23 +555,22 @@ main {
         }
         tr th,
         td {
-            height: 41px;
+            height: 50px;
             padding: 5px;
             text-align: center;
             color: $white;
         }
         td.edit,
         td.delete {
-            vertical-align: middle;
             position: absolute;
             color: #fff;
             width: 0;
-            display: inline-block;
+            display: block;
             transition: 0.2s linear;
             opacity: 0;
             text-align: center;
-            height: 41px;
-            padding: 14px 0;
+            height: 50px;
+            padding: 19px 0;
             button {
                 cursor: pointer;
                 background-color: transparent;
@@ -556,14 +623,22 @@ main {
         }
     }
     .hours-text-container {
+        opacity: 0;
+        animation: opacityAni ease-in .2s forwards .5s;
         margin-top: 15px;
         display: flex;
-        text-align: left;
+        text-align: center;
         flex-wrap: wrap;
+        margin-top: 15px;
+        background-color: rgba(7, 24, 39, .3);
+        padding: 20px;
+        align-content: center;
+        justify-content: center;
         p.hours-worked {
             margin-top: 0;
             font-weight: 200;
             margin-right: 5px;
+            @include fontMed;
         }
     }
 }
