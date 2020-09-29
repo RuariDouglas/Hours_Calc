@@ -52,7 +52,7 @@
                 <% let total = 0 %>
                     <% for(let shift of month.shifts){ %>
                         <% if (shift.author.id == currentUser.id) { %>
-                            <tr id="table-entries-row">
+                            <tr onclick="" id="table-entries-row">
                                 <td class="td">
                                     <%= functions.dateFormatter(shift.date) %>
                                 </td>
