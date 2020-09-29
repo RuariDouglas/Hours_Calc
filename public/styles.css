@@ -103,8 +103,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   body .container h1.title {
     margin: 10px 0 30px;
   }
-  body .container .hours-form,
-  body .container .edit-form {
+  body .container .hours-form {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -116,14 +115,29 @@ input[type="time"]::-webkit-calendar-picker-indicator {
             align-items: flex-end;
     width: 100%;
   }
-  body .container .hours-form .form-group,
-  body .container .edit-form .form-group {
+  body .container .hours-form .form-group {
     width: 19%;
   }
-  body .container .edit-form .form-group {
+  body .container-edit {
+    max-width: 768px;
+  }
+  body .container-edit .edit-form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    width: 100%;
+    max-width: 768px;
+  }
+  body .container-edit .edit-form .form-group {
     width: 24%;
   }
-  body .container #alert {
+  body .container-edit #alert {
     max-width: 768px;
   }
   body main table .table-header th {
@@ -180,6 +194,7 @@ body .bar {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  display: block;
 }
 
 body .bar .bar-wrapper {
@@ -250,6 +265,21 @@ body h1.error-404 {
   font-size: .9rem;
 }
 
+main {
+  position: relative;
+  min-height: 90%;
+  width: 100%;
+  overflow-x: hidden;
+  display: block;
+}
+
+.container {
+  margin: 10px auto;
+  text-align: center;
+  width: 100%;
+  padding: 0 5% 0;
+}
+
 .container-login {
   position: absolute;
   top: 50%;
@@ -269,8 +299,10 @@ body h1.error-404 {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 100%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  padding: 0 5% 0;
   display: block;
   margin-bottom: 10px;
   z-index: 1;
@@ -279,13 +311,6 @@ body h1.error-404 {
 
 .container-edit .form-group {
   width: 100%;
-}
-
-.container {
-  margin: 10px auto;
-  text-align: center;
-  width: 100%;
-  padding: 0 5% 0;
 }
 
 h1.title {
@@ -622,13 +647,6 @@ p.row-info {
 .submit .button:visited:active {
   background-color: #91E3CE;
   color: #071827;
-}
-
-main {
-  position: relative;
-  min-height: 90%;
-  width: 100%;
-  overflow-x: hidden;
 }
 
 .top {
