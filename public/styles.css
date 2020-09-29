@@ -312,6 +312,7 @@ body h1.error-404 {
   margin: 15px auto;
   border: 1px solid #91E3CE;
   text-align: center;
+  display: block;
 }
 
 .container p.spacer,

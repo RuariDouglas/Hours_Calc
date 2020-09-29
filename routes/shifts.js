@@ -26,12 +26,13 @@ router.get('/:id/shift/:shift_id/edit', functions.isLoggedIn, (req, res) => {
 
 // UPDATE
 router.put('/:id/shift/:shift_id', functions.isLoggedIn, (req, res) => {
-    const startTime = req.body.startTime;
-    const finishTime = req.body.endTime;
-    const lunchTime = req.body.lunchTime;
-    const date = Number(req.body.date);
+    const userDay = req.body.date;
+    const startTime = functions.slicer(req.body.startTime);
+    const finishTime = functions.slicer(req.body.endTime);
+    const lunchTime = functions.slicer(req.body.lunchTime);
     const totalShiftHours = functions.totalHours(startTime, finishTime, lunchTime);
     const newShift = {
+        date: userDay || day,
         startTime: startTime,
         finishTime: finishTime,
         lunchTime: lunchTime,
