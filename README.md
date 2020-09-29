@@ -19,7 +19,7 @@ The app works like so;
 ##### Discoveries
 ---
 Completing this project has given me a much deeper understanding of all the technologies used. Some key points of development were:
-* Searching through MongoDB docs in order to target/edit specific key/value pairs as well as utilising sorting methods. 
+* Searching through MongoDB docs in order to target/edit specific key/value pairs as well as utilising sorting methods.
 * Identifying cross-browser compatibility issues with 'time' inputs and creating a suitable javascript alternative to fix the problem.
 * Creating all functions that control how user input is converted into time,  formatted, then displayed, taking into consideration the differing calculations required for day/night shifts.
 * Adding frontend functionality with a serverside app. Click events, page loads, tooltips, form validation.
