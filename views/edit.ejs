@@ -3,10 +3,7 @@
         <h1 class="title">
             <span class="light">Hours</span> Calculator
         </h1>
-        <p class="edit-text light">Edit your shift for
-            <strong><%= month.month %>
-            <%= shift.date %></strong>
-        </p>
+
         <form class="login-form" action="/<%= month._id%>/shift/<%= shift._id %>?_method=put" method="POST" autocomplete="off">
             <div class="form-group">
                 <label for="start-time">Start time?</label>
