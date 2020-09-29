@@ -329,7 +329,7 @@ body h1.error-404 {
   text-decoration: none;
   font-weight: bold;
   color: #91E3CE;
-  margin: 0 auto;
+  margin: 0 auto 10px;
   display: block;
 }
 
@@ -589,7 +589,7 @@ p.row-info {
 }
 
 .top-spacer {
-  top: 54%;
+  top: 58%;
 }
 
 .submit {
