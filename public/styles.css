@@ -187,7 +187,7 @@ body h1 {
 
 body .bar {
   width: 100%;
-  height: 30px;
+  height: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -195,6 +195,7 @@ body .bar {
       -ms-flex-align: center;
           align-items: center;
   display: block;
+  position: relative;
 }
 
 body .bar .bar-wrapper {
@@ -822,6 +823,7 @@ table.shift-table .table-header th {
 }
 
 footer {
+  height: 40px;
   width: 100%;
 }
 
