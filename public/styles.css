@@ -475,7 +475,6 @@ a.register:hover {
   white-space: normal;
   width: 100%;
   display: block;
-  pointer-events: none;
   cursor: pointer;
   -webkit-transition: .3s linear;
   transition: .3s linear;
