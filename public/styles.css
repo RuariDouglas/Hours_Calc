@@ -145,7 +145,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     max-width: 768px;
   }
   body main table .table-header th {
-    font-size: .9rem;
+    font-size: 1rem;
     line-height: 2rem;
   }
   body .top-spacer {
@@ -269,7 +269,7 @@ body h1.error-404 {
   margin: 0 auto;
   padding: 5px 0;
   color: #fff;
-  font-size: .9rem;
+  font-size: 1rem;
 }
 
 main {
@@ -352,7 +352,7 @@ h4 {
 }
 
 p {
-  font-size: .9rem;
+  font-size: 1rem;
   color: #fff;
 }
 
@@ -375,7 +375,7 @@ p.spacer {
 }
 
 a.back {
-  font-size: .9rem;
+  font-size: 1rem;
   opacity: 0;
   -webkit-animation: opacityAni ease-in .2s forwards .6s;
           animation: opacityAni ease-in .2s forwards .6s;
@@ -391,7 +391,7 @@ a.back:hover {
 }
 
 a.register {
-  font-size: .9rem;
+  font-size: 1rem;
   background: transparent;
   text-decoration: none;
   font-weight: bold;
@@ -606,6 +606,7 @@ p.register {
 
 p.disclaimer,
 p.row-info {
+  font-size: 1rem;
   opacity: .6;
   text-align: left;
   font-weight: 200;
@@ -631,7 +632,7 @@ p.row-info {
 }
 
 .submit {
-  font-size: .9rem;
+  font-size: 1rem;
   width: 100%;
 }
 
@@ -679,7 +680,7 @@ select.month-list {
   width: auto;
   height: auto;
   line-height: inherit;
-  font-size: .9rem;
+  font-size: 1rem;
   background-color: transparent;
   -webkit-appearance: none;
   color: #91E3CE;
@@ -821,7 +822,7 @@ table.shift-table .table-header th {
   margin-top: 0;
   font-weight: 200;
   margin-right: 5px;
-  font-size: .9rem;
+  font-size: 1rem;
 }
 
 footer {
