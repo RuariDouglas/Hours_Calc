@@ -269,7 +269,7 @@ body {
         @include fontMed;
         color: $white;
     }
-    p.edit-text {
+    .edit-text {
         @include fontLg;
         opacity: 0;
         animation: opacityAni ease-in .2s forwards .1s;

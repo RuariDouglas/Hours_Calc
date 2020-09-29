@@ -300,8 +300,8 @@ body h1.error-404 {
   color: #fff;
 }
 
-.container p.edit-text,
-.container-login p.edit-text {
+.container .edit-text,
+.container-login .edit-text {
   font-size: 1.2rem;
   opacity: 0;
   -webkit-animation: opacityAni ease-in .2s forwards .1s;
