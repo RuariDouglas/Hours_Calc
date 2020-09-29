@@ -7,7 +7,7 @@
             <strong><%= month.month %>
                 <%= shift.date %></strong>
         </p>
-        <form class="edit-form" action="/<%= month._id%>/shift/<%= shift._id %>?_method=put" method="POST" autocomplete="off">
+        <form class="login-form" action="/<%= month._id%>/shift/<%= shift._id %>?_method=put" method="POST" autocomplete="off">
             <div class="form-group">
                 <label for="start-time">Start time?</label>
                 <input class="top-inputs time" name="startTime" type="text" value="<%= functions.spacer(shift.startTime) %>" required>
@@ -26,5 +26,6 @@
         </form>
         <a class="back" href="/<%=month._id%>">Back</a>
     </div>
+    </body>
 
-    <%- include("partials/footer") %>
+    </html>
