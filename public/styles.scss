@@ -118,14 +118,17 @@ $peaYellow: #F0FB96;
             }
         }
         .container-edit {
-            max-width: 768px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             .edit-form {
                 display: flex;
                 justify-content: space-between;
                 align-items: flex-end;
                 width: 100%;
-                max-width: 768px;
                 .form-group {
+                    text-align: left;
                     width: 24%;
                 }
             }
@@ -155,6 +158,9 @@ $peaYellow: #F0FB96;
             p {
                 padding: 7px 0;
             }
+        }
+        .container-edit {
+            max-width: 1024px;
         }
         #alert {
             max-width: 1024px !important;
@@ -279,6 +285,7 @@ main {
     z-index: 1;
     text-align: center;
     .form-group {
+        text-align: center;
         width: 100%;
     }
 }
@@ -415,6 +422,7 @@ a.register {
             white-space: normal;
             width: 100%;
             display: block;
+            pointer-events: none;
             cursor: pointer;
             transition: .3s linear;
             i {
