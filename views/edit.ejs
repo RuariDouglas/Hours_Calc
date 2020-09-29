@@ -4,7 +4,12 @@
             <h1 class="title">
                 <span class="light">Hours</span> Calculator
             </h1>
-            <h4>Edit</h4>
+            <div class="edit-text">
+                <p class="light">Edit your shift for
+                    <strong><%= month.month %>
+                <%= shift.date %></strong>
+                </p>
+            </div>
 
             <form class="edit-form" action="/<%= month._id%>/shift/<%= shift._id %>?_method=put" method="POST" autocomplete="off">
                 <div class="form-group">
