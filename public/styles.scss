@@ -516,7 +516,6 @@ p.register {
 p.disclaimer,
 p.row-info {
     @include fontMed;
-    opacity: .6;
     text-align: left;
     font-weight: 200;
     color: $turq;

@@ -607,7 +607,6 @@ p.register {
 p.disclaimer,
 p.row-info {
   font-size: 1rem;
-  opacity: .6;
   text-align: left;
   font-weight: 200;
   color: #91E3CE;
