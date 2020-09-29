@@ -247,14 +247,16 @@ body h1.error-404 {
   font-size: .9rem;
 }
 
-.container {
+.container,
+.container-login {
   margin: 10px auto;
   text-align: center;
   width: 100%;
   padding: 0 5% 0;
 }
 
-.container h1.title {
+.container h1.title,
+.container-login h1.title {
   opacity: 0;
   -webkit-animation: opacityAni ease-in .2s forwards;
           animation: opacityAni ease-in .2s forwards;
@@ -264,22 +266,26 @@ body h1.error-404 {
   margin: 10px 0 20px;
 }
 
-.container .light {
+.container .light,
+.container-login .light {
   font-weight: 200;
 }
 
-.container .label-light {
+.container .label-light,
+.container-login .label-light {
   font-weight: 200;
   font-size: .8rem;
 }
 
-.container h2.month-title {
+.container h2.month-title,
+.container-login h2.month-title {
   color: #91E3CE;
   font-size: 1.6rem;
   margin-bottom: 10px;
 }
 
-.container h4 {
+.container h4,
+.container-login h4 {
   opacity: 0;
   -webkit-animation: opacityAni ease-in .2s forwards .2s;
           animation: opacityAni ease-in .2s forwards .2s;
@@ -288,12 +294,14 @@ body h1.error-404 {
   margin-bottom: 10px;
 }
 
-.container p {
+.container p,
+.container-login p {
   font-size: .9rem;
   color: #fff;
 }
 
-.container p.edit-text {
+.container p.edit-text,
+.container-login p.edit-text {
   font-size: 1.2rem;
   opacity: 0;
   -webkit-animation: opacityAni ease-in .2s forwards .1s;
@@ -306,11 +314,13 @@ body h1.error-404 {
   text-align: center;
 }
 
-.container p.spacer {
+.container p.spacer,
+.container-login p.spacer {
   margin-bottom: 10px;
 }
 
-.container a.back {
+.container a.back,
+.container-login a.back {
   font-size: .9rem;
   opacity: 0;
   -webkit-animation: opacityAni ease-in .2s forwards .6s;
@@ -318,15 +328,17 @@ body h1.error-404 {
   text-decoration: none;
   font-weight: bold;
   color: #91E3CE;
-  margin: 13px auto;
+  margin: 0 auto;
   display: block;
 }
 
-.container a.back:hover {
+.container a.back:hover,
+.container-login a.back:hover {
   text-decoration: underline;
 }
 
-.container a.register {
+.container a.register,
+.container-login a.register {
   font-size: .9rem;
   background: transparent;
   text-decoration: none;
@@ -340,7 +352,8 @@ body h1.error-404 {
   margin: 10px auto;
 }
 
-.container a.register:hover {
+.container a.register:hover,
+.container-login a.register:hover {
   background-color: #91E3CE;
   color: #071827;
 }
