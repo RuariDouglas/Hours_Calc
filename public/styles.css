@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap");
-html {
+html,
+body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-size: 16px;
@@ -100,7 +101,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     padding: 0 5%;
   }
   body .container h1.title {
-    margin: 10px 0 20px;
+    margin: 10px 0 30px;
   }
   body .container .hours-form,
   body .container .edit-form {
@@ -147,7 +148,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     padding: 7px 0;
   }
   body #alert {
-    max-width: 1024px;
+    max-width: 1024px !important;
   }
   body footer .footer-wrapper {
     max-width: 1024px;
@@ -230,33 +231,64 @@ body h1.error-404 {
 
 #alert {
   opacity: 0;
-  width: 90%;
-  height: 30px;
-  background-color: #071827;
   color: #fff;
   margin: 0 auto;
-  border: 1px solid #91E3CE;
   text-align: center;
   -webkit-animation: flashMessage 5s linear;
           animation: flashMessage 5s linear;
+  display: block;
 }
 
 #alert p {
-  padding: 6px 0;
+  width: 90%;
+  height: 30px;
+  border: 1px solid #91E3CE;
+  background-color: #071827;
+  margin: 0 auto;
+  padding: 5px 0;
   color: #fff;
   font-size: .9rem;
 }
 
-.container,
 .container-login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: block;
+  margin-bottom: 10px;
+  z-index: 1;
+}
+
+.container-login .form-group {
+  width: 100%;
+}
+
+.container-edit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: block;
+  margin-bottom: 10px;
+  z-index: 1;
+  text-align: center;
+}
+
+.container-edit .form-group {
+  width: 100%;
+}
+
+.container {
   margin: 10px auto;
   text-align: center;
   width: 100%;
   padding: 0 5% 0;
 }
 
-.container h1.title,
-.container-login h1.title {
+h1.title {
   opacity: 0;
   -webkit-animation: opacityAni ease-in .2s forwards;
           animation: opacityAni ease-in .2s forwards;
@@ -264,28 +296,25 @@ body h1.error-404 {
   color: #fff;
   font-weight: 600;
   margin: 10px 0 20px;
+  line-height: 2.6rem;
 }
 
-.container .light,
-.container-login .light {
+.light {
   font-weight: 200;
 }
 
-.container .label-light,
-.container-login .label-light {
+.label-light {
   font-weight: 200;
   font-size: .8rem;
 }
 
-.container h2.month-title,
-.container-login h2.month-title {
+h2.month-title {
   color: #91E3CE;
   font-size: 1.6rem;
   margin-bottom: 10px;
 }
 
-.container h4,
-.container-login h4 {
+h4 {
   opacity: 0;
   -webkit-animation: opacityAni ease-in .2s forwards .2s;
           animation: opacityAni ease-in .2s forwards .2s;
@@ -294,14 +323,12 @@ body h1.error-404 {
   margin-bottom: 10px;
 }
 
-.container p,
-.container-login p {
+p {
   font-size: .9rem;
   color: #fff;
 }
 
-.container .edit-text,
-.container-login .edit-text {
+.edit-text {
   font-size: 1.2rem;
   opacity: 0;
   -webkit-animation: opacityAni ease-in .2s forwards .1s;
@@ -315,13 +342,11 @@ body h1.error-404 {
   display: block;
 }
 
-.container p.spacer,
-.container-login p.spacer {
+p.spacer {
   margin-bottom: 10px;
 }
 
-.container a.back,
-.container-login a.back {
+a.back {
   font-size: .9rem;
   opacity: 0;
   -webkit-animation: opacityAni ease-in .2s forwards .6s;
@@ -333,13 +358,11 @@ body h1.error-404 {
   display: block;
 }
 
-.container a.back:hover,
-.container-login a.back:hover {
+a.back:hover {
   text-decoration: underline;
 }
 
-.container a.register,
-.container-login a.register {
+a.register {
   font-size: .9rem;
   background: transparent;
   text-decoration: none;
@@ -353,8 +376,7 @@ body h1.error-404 {
   margin: 10px auto;
 }
 
-.container a.register:hover,
-.container-login a.register:hover {
+a.register:hover {
   background-color: #91E3CE;
   color: #071827;
 }
@@ -446,6 +468,8 @@ body h1.error-404 {
 .form-group label a[data-tool-tip]:hover::after {
   z-index: 3;
   opacity: 1;
+  height: auto;
+  width: 100%;
 }
 
 .form-group label a[data-tool-tip]::before {
@@ -459,7 +483,7 @@ body h1.error-404 {
   position: absolute;
   display: block;
   top: -32%;
-  left: 50%;
+  right: 0;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   -webkit-transition: .1s linear;
@@ -479,6 +503,7 @@ body h1.error-404 {
   position: absolute;
   padding: 8px 10px;
   width: 100%;
+  height: 0;
   color: #071827;
   bottom: 130%;
   opacity: 0;
@@ -573,21 +598,6 @@ p.row-info {
   margin-top: 10px;
 }
 
-.container-login {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  display: block;
-  margin-bottom: 10px;
-  z-index: 1;
-}
-
-.container-login .form-group {
-  width: 100%;
-}
-
 .top-spacer {
   top: 58%;
 }
@@ -615,24 +625,24 @@ p.row-info {
 }
 
 main {
-  height: 100%;
+  position: relative;
+  min-height: 90%;
   width: 100%;
   overflow-x: hidden;
-  opacity: 1;
 }
 
-main .top {
+.top {
   position: relative;
   z-index: 5;
 }
 
-main .middle {
+.middle {
   margin-top: 50px;
   position: relative;
   z-index: 0;
 }
 
-main .shifts-header {
+.shifts-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -644,7 +654,7 @@ main .shifts-header {
           animation: opacityAni ease-in .2s forwards .3s;
 }
 
-main select.month-list {
+select.month-list {
   width: auto;
   height: auto;
   line-height: inherit;
@@ -657,12 +667,12 @@ main select.month-list {
   padding: 0 6px;
 }
 
-main select.month-list:focus {
+select.month-list:focus {
   background-color: #91E3CE;
   color: #071827;
 }
 
-main table.shift-table {
+table.shift-table {
   opacity: 0;
   -webkit-animation: opacityAni ease-in .2s forwards .4s;
           animation: opacityAni ease-in .2s forwards .4s;
@@ -673,24 +683,24 @@ main table.shift-table {
   border-collapse: collapse;
 }
 
-main table.shift-table tr {
+table.shift-table tr {
   height: 41px;
 }
 
-main table.shift-table tr:nth-of-type(2n) {
+table.shift-table tr:nth-of-type(2n) {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-main table.shift-table tr th,
-main table.shift-table td {
+table.shift-table tr th,
+table.shift-table td {
   height: 50px;
   padding: 5px;
   text-align: center;
   color: #fff;
 }
 
-main table.shift-table td.edit,
-main table.shift-table td.delete {
+table.shift-table td.edit,
+table.shift-table td.delete {
   position: absolute;
   color: #fff;
   width: 0;
@@ -703,8 +713,8 @@ main table.shift-table td.delete {
   padding: 19px 0;
 }
 
-main table.shift-table td.edit button,
-main table.shift-table td.delete button {
+table.shift-table td.edit button,
+table.shift-table td.delete button {
   cursor: pointer;
   background-color: transparent;
   width: 100%;
@@ -714,46 +724,46 @@ main table.shift-table td.delete button {
   font-weight: bold;
 }
 
-main table.shift-table td.edit {
+table.shift-table td.edit {
   vertical-align: middle;
   background-color: #91E3CE;
   left: 0;
 }
 
-main table.shift-table td.edit button {
+table.shift-table td.edit button {
   color: #071827;
   cursor: pointer;
 }
 
-main table.shift-table td.edit i {
+table.shift-table td.edit i {
   color: #071827;
 }
 
-main table.shift-table td.delete {
+table.shift-table td.delete {
   background-color: #071827;
   right: 0;
 }
 
-main table.shift-table td.delete form {
+table.shift-table td.delete form {
   display: inline;
 }
 
-main table.shift-table td.delete form button {
+table.shift-table td.delete form button {
   color: #91E3CE;
 }
 
-main table.shift-table td.delete form i {
+table.shift-table td.delete form i {
   color: #91E3CE;
 }
 
-main table.shift-table td.td {
+table.shift-table td.td {
   vertical-align: middle;
 }
 
-main table.shift-table tr#table-entries-row:active td.edit,
-main table.shift-table tr#table-entries-row:hover td.edit,
-main table.shift-table tr#table-entries-row:active td.delete,
-main table.shift-table tr#table-entries-row:hover td.delete {
+table.shift-table tr#table-entries-row:active td.edit,
+table.shift-table tr#table-entries-row:hover td.edit,
+table.shift-table tr#table-entries-row:active td.delete,
+table.shift-table tr#table-entries-row:hover td.delete {
   -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
   width: 50%;
@@ -761,11 +771,11 @@ main table.shift-table tr#table-entries-row:hover td.delete {
   cursor: pointer;
 }
 
-main table.shift-table .table-header th {
+table.shift-table .table-header th {
   color: #91E3CE;
 }
 
-main .hours-text-container {
+.hours-text-container {
   opacity: 0;
   -webkit-animation: opacityAni ease-in .2s forwards .5s;
           animation: opacityAni ease-in .2s forwards .5s;
@@ -786,7 +796,7 @@ main .hours-text-container {
           justify-content: center;
 }
 
-main .hours-text-container p.hours-worked {
+.hours-text-container p.hours-worked {
   margin-top: 0;
   font-weight: 200;
   margin-right: 5px;
