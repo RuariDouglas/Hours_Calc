@@ -14,15 +14,15 @@
             <form class="edit-form" action="/<%= month._id%>/shift/<%= shift._id %>?_method=put" method="POST" autocomplete="off">
                 <div class="form-group">
                     <label for="start-time">Start time?</label>
-                    <input class="top-inputs time" name="startTime" type="text" value="<%= functions.spacer(shift.startTime) %>" required>
+                    <input pattern="\d{2}\s:\s\d{2}" class="top-inputs time" name="startTime" type="text" value="<%= functions.spacer(shift.startTime) %>" required>
                 </div>
                 <div class="form-group">
                     <label for="end-time">Finish time?</label>
-                    <input class="top-inputs time" name="endTime" type="text" value="<%= functions.spacer(shift.finishTime) %>" required>
+                    <input pattern="\d{2}\s:\s\d{2}" class="top-inputs time" name="endTime" type="text" value="<%= functions.spacer(shift.finishTime) %>" required>
                 </div>
                 <div class="form-group">
                     <label for="lunch-time">Lunch time?</label>
-                    <input class="top-inputs lunchTime" name="lunchTime" type="text" value="<%= functions.spacer(shift.lunchTime) %>" required>
+                    <input pattern="\d{2}\s:\s\d{2}" class="top-inputs lunchTime" name="lunchTime" type="text" value="<%= functions.spacer(shift.lunchTime) %>" required>
                 </div>
                 <div class="form-group submit">
                     <input class="top-inputs button" value="Submit" type="submit">
