@@ -1,20 +1,21 @@
 <%- include("partials/header") %>
-    <h1>
-        Hours Calculator</h1>
+    <h1>Shift Tracker</h1>
     <form action="/" method="POST">
-        <input step="any" min="0" max="23" type="number" name="startTime" placeholder="What time did you start?" required>
-        <input step="any" min="0" max="23" type="number" name="endTime" placeholder="What time did you finish?" required>
-        <input step="any" min="0" max="23" type="number" name="lunchTime" placeholder="How long was lunch?" required>
+        <input step="any" min="0" max="23" type="number" name="startTime" placeholder="What time did you start?" required />
+        <input step="any" min="0" max="23" type="number" name="endTime" placeholder="What time did you finish?" required />
+        <input step="any" min="0" max="23" type="number" name="lunchTime" placeholder="How long was lunch?" required />
         <button>Add Hours</button>
     </form>
     <main>
         <div class="container">
             <form action="/form2" method="POST">
                 <select name="months" id="monthSelector" onchange="location = this.value;">
-                    <% for (selectedMonth of months) { %>
-                        <option value="/<%= selectedMonth._id %>"><%= selectedMonth.month %></option>
-                    <% } %>
-                </select>
+        <% for (selectedMonth of months) { %>
+        <option value="/<%= selectedMonth._id %>">
+          <%= selectedMonth.month %>
+        </option>
+        <% } %>
+      </select>
             </form>
             <table class="<%= month %>">
                 <tr>
@@ -50,13 +51,10 @@
                             <% total += shift.totalShiftHours %>
                         </tr>
                         <% } %>
-
             </table>
-            <p>
-                Total hours worked:
+            <p>Total hours worked:
                 <%= total %>
             </p>
         </div>
-
     </main>
     <%- include("partials/footer") %>
