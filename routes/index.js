@@ -44,25 +44,25 @@ router.get("/logout", (req, res) => {
   res.redirect("/login");
 });
 
-// ----------- Register ---------------//
-router.get("/register", (req, res) => {
-  res.render("register");
-});
+// // ----------- Register ---------------//
+// router.get("/register", (req, res) => {
+//   res.render("register");
+// });
 
-// CREATE (NEW USER)
-router.post("/register", (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
-  User.register(new User({ username: username }), password, (err, user) => {
-    if (err) {
-      req.flash("error", err.message);
-      return res.render("register");
-    }
-    passport.authenticate("local")(req, res, function () {
-      req.flash("success", `Thankyou for registering ${user.username}`);
-      res.redirect("/");
-    });
-  });
-});
+// // CREATE (NEW USER)
+// router.post("/register", (req, res) => {
+//   const username = req.body.username;
+//   const password = req.body.password;
+//   User.register(new User({ username: username }), password, (err, user) => {
+//     if (err) {
+//       req.flash("error", err.message);
+//       return res.render("register");
+//     }
+//     passport.authenticate("local")(req, res, function () {
+//       req.flash("success", `Thankyou for registering ${user.username}`);
+//       res.redirect("/");
+//     });
+//   });
+// });
 
 module.exports = router;
