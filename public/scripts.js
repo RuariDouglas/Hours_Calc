@@ -1,19 +1,28 @@
 window.onload = (function () {
   const time = document.querySelectorAll(".time");
   const lunchTime = document.querySelector(".lunchTime");
+  const dateInput = document.querySelector(".date");
 
   function checkValue(str, max, check) {
-    if (check === "hour") {
-      return str[0] > 2 ? `0${str} : ` : str;
-    }
-    if (check === "lunch") {
-      return str[0] > 0 ? `0${str} : ` : str;
-    }
     if (str.length > 2) {
       str = str.substring(0, 2);
 
       return +str < max ? `${str} : ` : `${max} : `;
     } else return str;
+  }
+  function checkDate(date, max) {
+    let strDate = date.toString();
+    if (strDate.length > 2) {
+      strDate = strDate.substring(0, 2);
+      return +strDate;
+    }
+    if (date < 1 || isNaN(date)) {
+      return "";
+    }
+    if (date > max) {
+      return 31;
+    }
+    return date;
   }
 
   function validator(input) {
@@ -34,8 +43,8 @@ window.onload = (function () {
     let output = splitTime.map(function (v, i) {
       return v.length == 2 && i < 2 ? `${v} : ` : v;
     });
-    if (output[0]) output[0] = checkValue(output[0], 23, false);
-    if (output[1]) output[1] = checkValue(output[1], 59, false);
+    if (output[0]) output[0] = checkValue(output[0], 23);
+    if (output[1]) output[1] = checkValue(output[1], 59);
     return output.join("").substr(0, 7);
   }
 
@@ -48,5 +57,8 @@ window.onload = (function () {
   lunchTime.addEventListener("input", function (e) {
     this.value = handler(this.value, "lunch");
     validator(this);
+  });
+  dateInput.addEventListener("input", function () {
+    this.value = checkDate(this.value, 31);
   });
 })();
