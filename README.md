@@ -1,6 +1,7 @@
 # Hours Calculator App
 **Version 1.0.0**
 General project notes and basic app functionality.
+Live version can be found here: https://salty-journey-73704.herokuapp.com/login
 
 
 #### The Project
