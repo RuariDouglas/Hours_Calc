@@ -1,4 +1,4 @@
-# Hours Calculator App
+# Shift Tracker App
 **Version 1.0.0**
 General project notes and basic app functionality.
 Live version can be found here: https://salty-journey-73704.herokuapp.com/login
@@ -8,7 +8,8 @@ Live version can be found here: https://salty-journey-73704.herokuapp.com/login
 ---
 I wanted to create something of my own to familiarise myself with both the technologies I have been learning and the use of RESTful routing in creating a CRUD application. This was built using NodeJS, Express, MongoDB/Mongoose and utilises HTML, CSS & Javascript.
 
-This web app is for my girlfriend and a few friends who still keep track of all their shifts using pen and paper.
+This app was built from neccesity for my partner who was spending too much time calculating her hours manually.
+
 
 #### Functionality
 ---
@@ -25,7 +26,7 @@ Completing this project has given me a much deeper understanding of all the tech
 * Identifying cross-browser compatibility issues with 'time' inputs and creating a suitable javascript alternative to fix the problem.
 * Creating all functions that control how user input is converted into time,  formatted, then displayed, taking into consideration the differing calculations required for day/night shifts.
 * Adding frontend functionality with a serverside app. Click events, page loads, tooltips, form validation.
-* Creating user authentication and tying other model data to users.
+* Creating user authentication and tying model data to users.
 
 ##### License & Copyright
 © Ruari Douglas 
